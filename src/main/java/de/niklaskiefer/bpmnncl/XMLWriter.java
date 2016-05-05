@@ -24,6 +24,10 @@ public class XMLWriter {
     /** ELEMENT **/
     private static final String DEFINITION_XML_TAG = "definitions";
     private static final String PROCESS_XML_TAG = "process";
+    private static final String COLLABORATION_XML_TAG = "collaboration";
+    private static final String PARTICIPANT_XML_TAG = "participant";
+    private static final String BPMN_DIAGRAM_XML_TAG = "bpmndi:BPMNDiagram";
+    private static final String BPMN_PLANE_XML_TAG = "bpmndi:BPMNPlane";
 
     /** ATTRIBUTES **/
     private static final String[] DEFINITION_ATTRIBUTE_XMLNS = {"xmlns", "http://www.omg.org/spec/BPMN/20100524/MODEL"};
@@ -37,6 +41,7 @@ public class XMLWriter {
     private static final String[] PROCESS_ATTRIBUTE_IS_CLOSED = {"isClosed", "false"};
     private static final String[] PROCESS_ATTRIBUTE_IS_EXECUTABLE = {"isExecutable", "false"};
     private static final String[] PROCESS_ATTRIBUTE_PROCESS_TYPE = {"processType", "None"};
+    private static final String BPMN_ATTRIBUTE_ELEMENT = "bpmnElement";
 
     private static final String FILE_ID = "fid-" + UUID.randomUUID().toString();
     private static final String FILE_NAME = "process_" + "test_name";
@@ -53,6 +58,31 @@ public class XMLWriter {
         return attr;
     }
 
+    private Element createBPMNDiagram(Element collaboration) throws Exception {
+        Element bpmnDiagram = document.createElement(BPMN_DIAGRAM_XML_TAG);
+        bpmnDiagram.setAttributeNode(createAttribute("id", "bid-" + UUID.randomUUID().toString()));
+
+        Element bpmnPlane = document.createElement(BPMN_PLANE_XML_TAG);
+        bpmnPlane.setAttributeNode(createAttribute("id", "bid-" + UUID.randomUUID().toString()));
+        bpmnPlane.setAttributeNode(createAttribute(BPMN_ATTRIBUTE_ELEMENT, collaboration.getAttribute("id")));
+
+        bpmnDiagram.appendChild(bpmnPlane);
+        return bpmnDiagram;
+    }
+
+    private Element createCollaboration(Element process) throws Exception {
+        Element collaboration = document.createElement(COLLABORATION_XML_TAG);
+
+        collaboration.setAttributeNode(createAttribute("id", "cid-" + UUID.randomUUID().toString()));
+        Element participant = document.createElement(PARTICIPANT_XML_TAG);
+        participant.setAttributeNode(createAttribute("id", "paid-" + UUID.randomUUID().toString()));
+        participant.setAttributeNode(createAttribute("name", process.getAttribute("name")));
+        participant.setAttributeNode(createAttribute("processRef", process.getAttribute("id")));
+
+        collaboration.appendChild(participant);
+        return collaboration;
+    }
+
     private Element createDefinitions() throws Exception {
         Element definitions = document.createElement(DEFINITION_XML_TAG);
 
@@ -66,7 +96,11 @@ public class XMLWriter {
         definitions.setAttributeNode(createAttribute(DEFINITION_ATTRIBUTE_TYPE_LANGUAGE[0], DEFINITION_ATTRIBUTE_TYPE_LANGUAGE[1]));
         definitions.setAttributeNode(createAttribute(DEFINITION_ATTRIBUTE_XSI_SCHEMA_LOCATION[0], DEFINITION_ATTRIBUTE_XSI_SCHEMA_LOCATION[1]));
 
-        definitions.appendChild(createProcess());
+        Element process = createProcess();
+        Element collaboration = createCollaboration(process);
+        definitions.appendChild(collaboration);
+        definitions.appendChild(process);
+        definitions.appendChild(createBPMNDiagram(collaboration));
         return definitions;
     }
 
