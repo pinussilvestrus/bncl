@@ -12,7 +12,7 @@ repositories {
 
 apply plugin: 'application'
 
-mainClassName = 'main.java.de.niklaskiefer.bpmnncl.MainApplication'
+mainClassName = 'de.niklaskiefer.bpmnncl.MainApplication'
 
 jar {
     baseName = 'bpmnNCL-gradle'
