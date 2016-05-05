@@ -34,8 +34,12 @@ public class XMLWriter {
     private static final String[] DEFINITION_ATTRIBUTE_EXPRESSION_LANGUAGE = {"expressionLanguage", "http://www.w3.org/TR/XPath"};
     private static final String[] DEFINITION_ATTRIBUTE_TYPE_LANGUAGE = {"typeLanguage", "http://www.w3.org/2001/XMLSchema"};
     private static final String[] DEFINITION_ATTRIBUTE_XSI_SCHEMA_LOCATION = {"xsi:schemaLocation", "http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"};
+    private static final String[] PROCESS_ATTRIBUTE_IS_CLOSED = {"isClosed", "false"};
+    private static final String[] PROCESS_ATTRIBUTE_IS_EXECUTABLE = {"isExecutable", "false"};
+    private static final String[] PROCESS_ATTRIBUTE_PROCESS_TYPE = {"processType", "None"};
 
-    private static final String FILE_NAME = "process";
+    private static final String FILE_ID = "fid-" + UUID.randomUUID().toString();
+    private static final String FILE_NAME = "process_" + "test_name";
     private Document document;
     private static final Logger logger = Logger.getLogger(XMLWriter.class.getName());
 
@@ -52,7 +56,7 @@ public class XMLWriter {
     private Element createDefinitions() throws Exception {
         Element definitions = document.createElement(DEFINITION_XML_TAG);
 
-        definitions.setAttributeNode(createAttribute("id", "pid" + UUID.randomUUID().toString()));
+        definitions.setAttributeNode(createAttribute("id", FILE_ID));
         definitions.setAttributeNode(createAttribute(DEFINITION_ATTRIBUTE_XMLNS[0], DEFINITION_ATTRIBUTE_XMLNS[1]));
         definitions.setAttributeNode(createAttribute(DEFINITION_ATTRIBUTE_XMLNS_BPMNDI[0], DEFINITION_ATTRIBUTE_XMLNS_BPMNDI[1]));
         definitions.setAttributeNode(createAttribute(DEFINITION_ATTRIBUTE_XMLNS_OMGDC[0], DEFINITION_ATTRIBUTE_XMLNS_OMGDC[1]));
@@ -68,6 +72,13 @@ public class XMLWriter {
 
     private Element createProcess() throws Exception {
         Element process = document.createElement(PROCESS_XML_TAG);
+
+        process.setAttributeNode(createAttribute("id", "pid-" + UUID.randomUUID().toString()));
+        process.setAttributeNode(createAttribute("name", "test-process")); // todo
+        process.setAttributeNode(createAttribute(PROCESS_ATTRIBUTE_IS_CLOSED[0], PROCESS_ATTRIBUTE_IS_CLOSED[1]));
+        process.setAttributeNode(createAttribute(PROCESS_ATTRIBUTE_IS_EXECUTABLE[0], PROCESS_ATTRIBUTE_IS_EXECUTABLE[1]));
+        process.setAttributeNode(createAttribute(PROCESS_ATTRIBUTE_PROCESS_TYPE[0], PROCESS_ATTRIBUTE_PROCESS_TYPE[1]));
+
         return process;
     }
 
@@ -96,6 +107,7 @@ public class XMLWriter {
             logger.info("Successfully creating BPMN-XML-File called " + FILE_NAME);
         } catch (Exception e) {
             e.printStackTrace();
+            logger.warning(e.getMessage());
         }
     }
 }
