@@ -12,12 +12,12 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import de.niklaskiefer.bpmnncl.parser.BnclParser;
+
 /**
  * @author Niklas Kiefer
  */
 public class XMLWriter {
-
-    private static final String CAMUNDA_NAMESPACE = "http://camunda.org/examples";
 
     private String fileName;
     private static final Logger logger = Logger.getLogger(XMLWriter.class.getName());
@@ -27,9 +27,9 @@ public class XMLWriter {
         fileName = "test_process";
     }
 
-    public void createBPMNFile() {
+    public void createBPMNFile(String bncl) {
         try {
-            BpmnModelInstance bpmnModelInstance = createBPMModelInstance();
+            BpmnModelInstance bpmnModelInstance = createBPMModelInstance(bncl);
             String xmlString = Bpmn.convertToString(bpmnModelInstance);
 
             File fileBPMN = new File("out/" + fileName + ".bpmn");
@@ -44,16 +44,16 @@ public class XMLWriter {
         }
     }
 
-    private BpmnModelInstance createBPMModelInstance() {
-        String id = "pid-" + UUID.randomUUID().toString();
-        BpmnModelInstance bpmnModelInstance = Bpmn.createExecutableProcess(id)
-                .startEvent()
-                .userTask()
-                .endEvent()
-                .done();
-        Definitions definitions = bpmnModelInstance.newInstance(Definitions.class);
-        definitions.setTargetNamespace(CAMUNDA_NAMESPACE);
-        bpmnModelInstance.setDefinitions(definitions);
-        return bpmnModelInstance;
+    private BpmnModelInstance createBPMModelInstance(String bncl) {
+        BnclParser parser = new BnclParser();
+        BpmnModelInstance modelInstance;
+        try {
+            modelInstance = parser.parseBncl(bncl);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return modelInstance;
     }
 }
