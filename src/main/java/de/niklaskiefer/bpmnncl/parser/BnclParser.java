@@ -22,14 +22,16 @@ public class BnclParser extends AbstractBnclParser {
   private BpmnModelInstance modelInstance;
 
   // granular parsers
-  private BnclElementParser elementParser;
+  private BnclEventParser eventParser;
+  private BnclTaskParser taskParser;
   private BnclSequenceFlowParser sequenceFlowParser;
 
   private String copy;
 
   public BnclParser() {
     builder = new BPMNModelBuilder();
-    elementParser = new BnclElementParser(builder);
+    eventParser = new BnclEventParser(builder);
+    taskParser = new BnclTaskParser(builder);
     sequenceFlowParser = new BnclSequenceFlowParser(builder);
     logger().setLevel(Level.INFO);
   }
@@ -69,7 +71,8 @@ public class BnclParser extends AbstractBnclParser {
    String[] elements = bncl.split("WITH");
 
     for (String element : elements) {
-      elementParser.parseProcessElement(element);
+      eventParser.parseEvent(element);
+      taskParser.parseTask(element);
       sequenceFlowParser.parseSequenceFlow(element);
     }
   }
