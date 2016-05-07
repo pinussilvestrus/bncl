@@ -17,29 +17,24 @@ import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 /**
  * @author Niklas Kiefer
  */
-public class BnclParser {
+public class BnclParser extends AbstractBnclParser {
 
   private final String BEGINNING_GROUP = "LETS CREATE A PROCESS";
 
   private final String PARSING_FAILS_MESSAGE = "Parsing bncl failed";
 
-  // element types
-  private final String START_EVENT = "STARTEVENT";
-  private final String USER_TASK = "USERTASK";
-  private final String END_EVENT = "ENDEVENT";
-
   private BPMNModelBuilder builder;
   private BpmnModelInstance modelInstance;
-  private BnclObject bnclObject;
+
+  // granular parsers
+  private BnclElementParser elementParser;
 
   private String copy;
 
-  private static final Logger logger = Logger.getLogger(BnclParser.class.getName());
-
   public BnclParser() {
     builder = new BPMNModelBuilder();
-    bnclObject = new BnclObject();
-    logger.setLevel(Level.INFO);
+    elementParser = new BnclElementParser(builder);
+    logger().setLevel(Level.INFO);
   }
 
   public BpmnModelInstance parseBncl(String bnclString) throws Exception {
@@ -62,37 +57,9 @@ public class BnclParser {
    String[] splits = bncl.split("WITH");
 
     for (String split : splits) {
-      buildProcessElement(split);
+      elementParser.buildProcessElement(split);
     }
   }
 
-  private void buildProcessElement(String elementString) {
-    List<String> words = new ArrayList<>();
-    Collections.addAll(words, elementString.split(" "));
-
-    // remove spaces
-    List<String> withoutSpaces = new ArrayList<>();
-    for (String word : words) {
-      if (!word.equals(" ") && !word.equals("")) {
-        withoutSpaces.add(word);
-      }
-    }
-
-    for (String word : withoutSpaces) {
-      logger.info(word);
-    }
-
-    switch (withoutSpaces.get(0)) {
-      case START_EVENT:
-        builder.createElement(builder.getProcess(), "startEvent1", StartEvent.class);
-        break;
-      case END_EVENT:
-        builder.createElement(builder.getProcess(), "endEvent1", EndEvent.class);
-        break;
-      case USER_TASK:
-       builder.createElement(builder.getProcess(), "task1", UserTask.class);
-      default: break;
-    }
-  }
 
 }

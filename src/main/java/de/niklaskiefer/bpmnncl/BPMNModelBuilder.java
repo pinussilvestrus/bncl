@@ -1,5 +1,6 @@
 package de.niklaskiefer.bpmnncl;
 
+import java.util.Map;
 import java.util.UUID;
 
 import org.camunda.bpm.model.bpmn.Bpmn;
@@ -13,10 +14,6 @@ import org.camunda.bpm.model.bpmn.instance.SequenceFlow;
 import org.camunda.bpm.model.bpmn.instance.StartEvent;
 import org.camunda.bpm.model.bpmn.instance.UserTask;
 import org.camunda.bpm.model.bpmn.instance.bpmndi.BpmnDiagram;
-
-import de.niklaskiefer.bpmnncl.parser.BnclObject;
-import de.niklaskiefer.bpmnncl.parser.FlowObject;
-import de.niklaskiefer.bpmnncl.parser.ProcessElement;
 
 /**
  * @author Niklas Kiefer
@@ -58,6 +55,14 @@ public class BPMNModelBuilder {
     sequenceFlow.setTarget(to);
     to.getIncoming().add(sequenceFlow);
     return sequenceFlow;
+  }
+
+  public <T extends BpmnModelElementInstance> T createElement(BpmnModelElementInstance parentElement, String id, Class<T> elementClass, Map<String, String> attributes) {
+    T element = createElement(parentElement, id, elementClass);
+    for (Map.Entry<String, String> s : attributes.entrySet()) {
+      element.setAttributeValue(s.getKey(), s.getValue(), false);
+    }
+    return element;
   }
 
   public <T extends BpmnModelElementInstance> T createElement(BpmnModelElementInstance parentElement, String id, Class<T> elementClass) {
