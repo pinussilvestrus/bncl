@@ -18,9 +18,9 @@ import java.util.*;
 public class BnclElementParser extends AbstractBnclParser {
 
     // element types
-    private final String START_EVENT = "STARTEVENT";
-    private final String USER_TASK = "USERTASK";
-    private final String END_EVENT = "ENDEVENT";
+    private final String START_EVENT_KEYWORD = "STARTEVENT";
+    private final String USER_TASK_KEYWORD = "USERTASK";
+    private final String END_EVENT_KEYWORD = "ENDEVENT";
 
     // attribute types
     private final String ATTRIBUTE_NAME = "Called";
@@ -30,34 +30,25 @@ public class BnclElementParser extends AbstractBnclParser {
         this.builder = builder;
     }
 
-    public void buildProcessElement(String elementString) {
-        List<String> words = new ArrayList<>();
-        Collections.addAll(words, elementString.split(" "));
+    public void parseProcessElement(String elementString) {
+        List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
-        // remove spaces
-        List<String> withoutSpaces = new ArrayList<>();
-        for (String word : words) {
-            if (!word.equals(" ") && !word.equals("")) {
-                withoutSpaces.add(word);
-            }
-        }
-
-        for (String word : withoutSpaces) {
+        /**for (String word : withoutSpaces) {
             logger().info(word);
-        }
+        }**/
 
         String id;
         Class type;
         switch (withoutSpaces.get(0)) {
-            case START_EVENT:
+            case START_EVENT_KEYWORD:
                 id = "startEvent1"; // TODO: 07.05.2016
                 type = StartEvent.class;
                 break;
-            case END_EVENT:
+            case END_EVENT_KEYWORD:
                 id = "endEvent1"; // TODO: 07.05.2016
                 type = EndEvent.class;
                 break;
-            case USER_TASK:
+            case USER_TASK_KEYWORD:
                 id = "userTask1"; // TODO: 07.05.2016
                 type = UserTask.class;
                 break;

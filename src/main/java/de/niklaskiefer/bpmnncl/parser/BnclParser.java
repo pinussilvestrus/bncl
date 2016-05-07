@@ -3,14 +3,9 @@ package de.niklaskiefer.bpmnncl.parser;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
-import org.camunda.bpm.model.bpmn.instance.EndEvent;
-import org.camunda.bpm.model.bpmn.instance.StartEvent;
-import org.camunda.bpm.model.bpmn.instance.UserTask;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
@@ -28,13 +23,30 @@ public class BnclParser extends AbstractBnclParser {
 
   // granular parsers
   private BnclElementParser elementParser;
+  private BnclSequenceFlowParser sequenceFlowParser;
 
   private String copy;
 
   public BnclParser() {
     builder = new BPMNModelBuilder();
     elementParser = new BnclElementParser(builder);
+    sequenceFlowParser = new BnclSequenceFlowParser(builder);
     logger().setLevel(Level.INFO);
+  }
+
+  public static List<String> getWordsWithoutSpaces(String element) {
+    List<String> words = new ArrayList<>();
+    Collections.addAll(words, element.split(" "));
+
+    // remove spaces
+    List<String> withoutSpaces = new ArrayList<>();
+    for (String word : words) {
+      if (!word.equals(" ") && !word.equals("")) {
+        withoutSpaces.add(word);
+      }
+    }
+
+    return withoutSpaces;
   }
 
   public BpmnModelInstance parseBncl(String bnclString) throws Exception {
@@ -54,12 +66,12 @@ public class BnclParser extends AbstractBnclParser {
   }
 
   private void buildElements(String bncl) {
-   String[] splits = bncl.split("WITH");
+   String[] elements = bncl.split("WITH");
 
-    for (String split : splits) {
-      elementParser.buildProcessElement(split);
+    for (String element : elements) {
+      elementParser.parseProcessElement(element);
+      sequenceFlowParser.parseSequenceFlow(element);
     }
   }
-
 
 }

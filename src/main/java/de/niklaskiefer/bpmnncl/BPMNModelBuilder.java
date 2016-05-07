@@ -1,5 +1,7 @@
 package de.niklaskiefer.bpmnncl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,6 +16,7 @@ import org.camunda.bpm.model.bpmn.instance.SequenceFlow;
 import org.camunda.bpm.model.bpmn.instance.StartEvent;
 import org.camunda.bpm.model.bpmn.instance.UserTask;
 import org.camunda.bpm.model.bpmn.instance.bpmndi.BpmnDiagram;
+import org.camunda.bpm.model.xml.impl.type.attribute.StringAttribute;
 
 /**
  * @author Niklas Kiefer
@@ -24,6 +27,7 @@ public class BPMNModelBuilder {
 
   private BpmnModelInstance bpmnModelInstance;
   private Process process;
+  private List<BpmnModelElementInstance> elements = new ArrayList<>();
 
   public BPMNModelBuilder() {
     String id = "pid-" + UUID.randomUUID().toString();
@@ -44,6 +48,24 @@ public class BPMNModelBuilder {
     Definitions definitions = bpmnModelInstance.newInstance(Definitions.class);
     definitions.setTargetNamespace(CAMUNDA_NAMESPACE);
     bpmnModelInstance.setDefinitions(definitions);
+  }
+
+  public SequenceFlow createSequenceFlow(Process process, String idFrom, String idTo) {
+    FlowNode from = null;
+    FlowNode to = null;
+    for (BpmnModelElementInstance element: elements) {
+      if (element.getAttributeValue("id").equals(idFrom)) {
+        from = (FlowNode) element;
+      } else if (element.getAttributeValue("id").equals(idTo)) {
+        to = (FlowNode) element;
+      }
+    }
+
+    if(from != null && to != null) {
+      return createSequenceFlow(process, from, to);
+    }
+
+    return null;
   }
 
   public SequenceFlow createSequenceFlow(Process process, FlowNode from, FlowNode to) {
@@ -69,6 +91,7 @@ public class BPMNModelBuilder {
     T element = bpmnModelInstance.newInstance(elementClass);
     element.setAttributeValue("id", id, true);
     parentElement.addChildElement(element);
+    elements.add(element); // save all elements for later referencing
     return element;
   }
 
