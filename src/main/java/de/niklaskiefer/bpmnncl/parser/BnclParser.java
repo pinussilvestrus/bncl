@@ -82,7 +82,7 @@ public class BnclParser extends AbstractBnclParser {
     return modelInstance;
   }
 
-  private void buildElements(String bncl) {
+  private void buildElements(String bncl) throws Exception {
    String[] elements = bncl.toLowerCase().split("with");
 
     for (String element : elements) {

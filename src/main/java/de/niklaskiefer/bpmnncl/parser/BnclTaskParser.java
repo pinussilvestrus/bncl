@@ -19,7 +19,7 @@ public class BnclTaskParser extends BnclElementParser {
         super(builder);
     }
 
-    public void parseTask(String elementString) {
+    public void parseTask(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
         /**for (String word : withoutSpaces) {

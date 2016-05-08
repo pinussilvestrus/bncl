@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions id="definitions_14e29e37-0517-4b76-bcac-c54a5f5644d0" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="pid-3aea7a8c-ce45-4c67-aaa8-e6da784f5950">
+    <startEvent id="startevent1" name="startevent1">
+      <outgoing>startevent1-endevent1</outgoing>
+    </startEvent>
+    <endEvent id="endevent1" name="endevent1">
+      <incoming>startevent1-endevent1</incoming>
+    </endEvent>
+    <sequenceFlow id="startevent1-endevent1" sourceRef="startevent1" targetRef="endevent1"/>
+  </process>
+</definitions>

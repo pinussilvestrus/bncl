@@ -22,7 +22,7 @@ public class BnclToXmlWriter {
         fileName = "test_process";
     }
 
-    public void createBPMNFile(String bncl) throws Exception {
+    public String createBPMNFile(String bncl) throws Exception {
         BpmnModelInstance bpmnModelInstance = createBPMModelInstance(bncl);
         String xmlString = Bpmn.convertToString(bpmnModelInstance);
 
@@ -32,6 +32,7 @@ public class BnclToXmlWriter {
         Bpmn.writeModelToFile(fileXML, bpmnModelInstance);
 
         logger.info("Successfully save bpmn file to " + fileName);
+        return xmlString;
     }
 
     private BpmnModelInstance createBPMModelInstance(String bncl) {

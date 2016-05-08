@@ -21,7 +21,7 @@ public class BnclEventParser extends BnclElementParser {
         super(builder);
     }
 
-    public void parseEvent(String elementString) {
+    public void parseEvent(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
         /**for (String word : withoutSpaces) {

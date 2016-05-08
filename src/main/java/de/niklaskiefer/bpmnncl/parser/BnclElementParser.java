@@ -21,13 +21,15 @@ public class BnclElementParser extends AbstractBnclParser {
     protected final String ATTRIBUTE_NAME = "called";
     protected final String ATTRIBUTE_ID = "signed";
 
+    private final String NO_ID_EXCEPTION = "This element has not id! Please add a \'signed\' attribute";
+
     protected BPMNModelBuilder builder;
 
     public BnclElementParser(BPMNModelBuilder builder) {
         this.builder = builder;
     }
 
-    protected Map<String,String> parseAttributes(List<String> components) {
+    protected Map<String,String> parseAttributes(List<String> components) throws Exception {
         Map<String, String> attributes = new HashMap<>();
         for (int i = 0; i < components.size(); i++) {
             String word = components.get(i);
@@ -40,6 +42,10 @@ public class BnclElementParser extends AbstractBnclParser {
                     break;
                 default: break;
             }
+        }
+
+        if (!attributes.containsKey("id")) {
+            throw new Exception(NO_ID_EXCEPTION);
         }
 
         return  attributes;

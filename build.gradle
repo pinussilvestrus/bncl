@@ -24,7 +24,7 @@ run {
 }
 
 jar {
-    baseName = 'bpmnNCL-gradle'
+    baseName = 'bncl'
     version =  '0.1.0'
     // put dependencies to jar
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
