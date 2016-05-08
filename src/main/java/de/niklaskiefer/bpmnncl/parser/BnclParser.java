@@ -14,7 +14,7 @@ import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
  */
 public class BnclParser extends AbstractBnclParser {
 
-  private final String BEGINNING_GROUP = "LETS CREATE A PROCESS";
+  private final String BEGINNING_GROUP = "lets create a process";
 
   private final String PARSING_FAILS_MESSAGE = "Parsing bncl failed";
 
@@ -36,6 +36,16 @@ public class BnclParser extends AbstractBnclParser {
     logger().setLevel(Level.INFO);
   }
 
+  public static boolean checkWords(List<String> withoutSpaces) {
+    try {
+      withoutSpaces.get(0);
+    } catch (Exception e) {
+      return false ;
+    }
+
+    return true;
+  }
+
   public static List<String> getWordsWithoutSpaces(String element) {
     List<String> words = new ArrayList<>();
     Collections.addAll(words, element.split(" "));
@@ -52,12 +62,17 @@ public class BnclParser extends AbstractBnclParser {
   }
 
   public BpmnModelInstance parseBncl(String bnclString) throws Exception {
-    if (bnclString.indexOf(BEGINNING_GROUP) != 0) {
+    if (bnclString.toLowerCase().indexOf(BEGINNING_GROUP) != 0) {
       throw new Exception(PARSING_FAILS_MESSAGE);
     }
 
     copy = bnclString;
-    copy = copy.substring(bnclString.indexOf(BEGINNING_GROUP) + BEGINNING_GROUP.length() + 1, copy.length());
+
+    try {
+      copy = copy.substring(bnclString.indexOf(BEGINNING_GROUP) + BEGINNING_GROUP.length() + 1, copy.length());
+    } catch (StringIndexOutOfBoundsException e) {
+      System.exit(1);
+    }
 
     builder.createDefinitions();
     builder.createProcess();
@@ -68,7 +83,7 @@ public class BnclParser extends AbstractBnclParser {
   }
 
   private void buildElements(String bncl) {
-   String[] elements = bncl.split("WITH");
+   String[] elements = bncl.toLowerCase().split("with");
 
     for (String element : elements) {
       eventParser.parseEvent(element);

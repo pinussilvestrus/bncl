@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class BnclSequenceFlowParser extends AbstractBnclParser {
 
-    private final String SEQUENCE_FLOW_KEYWORD = "SEQUENCEFLOW";
+    private final String SEQUENCE_FLOW_KEYWORD = "sequenceflow";
 
     // attributes
-    private final String COMES_FROM = "ComesFrom";
-    private final String GOES_TO = "GoesTo";
+    private final String COMES_FROM = "comesfrom";
+    private final String GOES_TO = "goesto";
 
     private BPMNModelBuilder builder;
 
@@ -28,12 +28,16 @@ public class BnclSequenceFlowParser extends AbstractBnclParser {
          logger().info(word);
         }**/
 
+        if(!BnclParser.checkWords(wordsWithoutSpaces)) {
+         return;
+        }
+
         String fromId = "";
         String toId = "";
-        if (wordsWithoutSpaces.get(0).equals(SEQUENCE_FLOW_KEYWORD)) {
+        if (wordsWithoutSpaces.get(0).toLowerCase().equals(SEQUENCE_FLOW_KEYWORD)) {
             for (int i = 1; i < wordsWithoutSpaces.size(); i++) {
                 String word = wordsWithoutSpaces.get(i);
-                switch (word) {
+                switch (word.toLowerCase()) {
                     case COMES_FROM:
                         fromId = wordsWithoutSpaces.get(i+1);
                         break;

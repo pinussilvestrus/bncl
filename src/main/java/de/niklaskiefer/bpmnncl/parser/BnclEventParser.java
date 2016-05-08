@@ -14,8 +14,8 @@ import java.util.Map;
 public class BnclEventParser extends BnclElementParser {
 
     // event types
-    private final String START_EVENT_KEYWORD = "STARTEVENT";
-    private final String END_EVENT_KEYWORD = "ENDEVENT";
+    private final String START_EVENT_KEYWORD = "startevent";
+    private final String END_EVENT_KEYWORD = "endevent";
 
     public BnclEventParser(BPMNModelBuilder builder) {
         super(builder);
@@ -30,13 +30,16 @@ public class BnclEventParser extends BnclElementParser {
 
         String id;
         Class type;
-        switch (withoutSpaces.get(0)) {
+
+        if(!BnclParser.checkWords(withoutSpaces)) {
+            return;
+        }
+
+        switch (withoutSpaces.get(0).toLowerCase()) {
             case START_EVENT_KEYWORD:
-                id = "startEvent1"; // TODO: 07.05.2016
                 type = StartEvent.class;
                 break;
             case END_EVENT_KEYWORD:
-                id = "endEvent1"; // TODO: 07.05.2016
                 type = EndEvent.class;
                 break;
             default:
@@ -44,6 +47,6 @@ public class BnclEventParser extends BnclElementParser {
         }
 
         Map<String, String> attributes = parseAttributes(withoutSpaces);
-        builder.createElement(builder.getProcess(), id, type, attributes);
+        builder.createElement(builder.getProcess(), type, attributes);
     }
 }

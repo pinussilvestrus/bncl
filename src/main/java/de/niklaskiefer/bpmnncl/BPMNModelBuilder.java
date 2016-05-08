@@ -79,8 +79,8 @@ public class BPMNModelBuilder {
     return sequenceFlow;
   }
 
-  public <T extends BpmnModelElementInstance> T createElement(BpmnModelElementInstance parentElement, String id, Class<T> elementClass, Map<String, String> attributes) {
-    T element = createElement(parentElement, id, elementClass);
+  public <T extends BpmnModelElementInstance> T createElement(BpmnModelElementInstance parentElement, Class<T> elementClass, Map<String, String> attributes) {
+    T element = createElement(parentElement, "dump", elementClass);
     for (Map.Entry<String, String> s : attributes.entrySet()) {
       element.setAttributeValue(s.getKey(), s.getValue(), false);
     }

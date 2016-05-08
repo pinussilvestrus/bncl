@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class BnclTaskParser extends BnclElementParser {
 
-    private final String USER_TASK_KEYWORD = "USERTASK";
+    private final String USER_TASK_KEYWORD = "usertask";
 
     public BnclTaskParser(BPMNModelBuilder builder) {
         super(builder);
@@ -26,11 +26,14 @@ public class BnclTaskParser extends BnclElementParser {
          logger().info(word);
          }**/
 
+        if(!BnclParser.checkWords(withoutSpaces)) {
+            return;
+        }
+
         String id;
         Class type;
-        switch (withoutSpaces.get(0)) {
+        switch (withoutSpaces.get(0).toLowerCase()) {
             case USER_TASK_KEYWORD:
-                id = "userTask1"; // TODO: 07.05.2016
                 type = UserTask.class;
                 break;
             default:
@@ -38,6 +41,6 @@ public class BnclTaskParser extends BnclElementParser {
         }
 
         Map<String, String> attributes = parseAttributes(withoutSpaces);
-        builder.createElement(builder.getProcess(), id, type, attributes);
+        builder.createElement(builder.getProcess(), type, attributes);
     }
 }

@@ -18,7 +18,9 @@ import java.util.*;
 public class BnclElementParser extends AbstractBnclParser {
 
     // attribute types
-    protected final String ATTRIBUTE_NAME = "Called";
+    protected final String ATTRIBUTE_NAME = "called";
+    protected final String ATTRIBUTE_ID = "signed";
+
     protected BPMNModelBuilder builder;
 
     public BnclElementParser(BPMNModelBuilder builder) {
@@ -29,9 +31,12 @@ public class BnclElementParser extends AbstractBnclParser {
         Map<String, String> attributes = new HashMap<>();
         for (int i = 0; i < components.size(); i++) {
             String word = components.get(i);
-            switch (word) {
+            switch (word.toLowerCase()) {
                 case ATTRIBUTE_NAME:
                     attributes.put("name", components.get(i+1));
+                    break;
+                case ATTRIBUTE_ID:
+                    attributes.put("id", components.get(i+1));
                     break;
                 default: break;
             }
