@@ -7,7 +7,7 @@ find runnable in subfolder **executables**
 
 **example bcnl-statement:**
 
-> lets create a process with startevent signed startEvent1 called startevent1 with endevent signed endevent1 called endevent1 with sequenceflow comesfrom startevent1 goesto endevent1
+> lets create a process with startevent signed startEvent1 called startevent1 with usertask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1
 
 if success: .xml and .bpmn file is generated in same folder
 
@@ -30,11 +30,13 @@ is a keyword that signs the beginning of a process element
 
 signs a sequence workflow between process elements. **comesfrom** with given id signs the fromElement, **goesto** signes the toElement.
 
- **elements:**
+ ** normal elements:**
 
  - startevent
  - endevent
  - usertask
+ - parallelgateway
+ 
 
 **attributes:**
 

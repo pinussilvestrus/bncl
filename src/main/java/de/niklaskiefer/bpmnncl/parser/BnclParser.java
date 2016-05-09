@@ -25,6 +25,7 @@ public class BnclParser extends AbstractBnclParser {
   private BnclEventParser eventParser;
   private BnclTaskParser taskParser;
   private BnclSequenceFlowParser sequenceFlowParser;
+  private BnclGatewayParser gatewayParser;
 
   private String copy;
 
@@ -33,6 +34,7 @@ public class BnclParser extends AbstractBnclParser {
     eventParser = new BnclEventParser(builder);
     taskParser = new BnclTaskParser(builder);
     sequenceFlowParser = new BnclSequenceFlowParser(builder);
+    gatewayParser = new BnclGatewayParser(builder);
     logger().setLevel(Level.INFO);
   }
 
@@ -89,6 +91,7 @@ public class BnclParser extends AbstractBnclParser {
       eventParser.parseEvent(element);
       taskParser.parseTask(element);
       sequenceFlowParser.parseSequenceFlow(element);
+      gatewayParser.parseGateway(element);
     }
   }
 

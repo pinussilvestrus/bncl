@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions id="definitions_2cffda77-5043-4c78-b2f8-924eaf58ef0c" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
-  <process id="pid-9dccedd4-f8ef-43ec-8f2e-79b62a1cff7f">
+<definitions id="definitions_4250a46d-e438-40ea-9681-27a53d348903" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="pid-694eac07-8e09-43ff-9fba-94630a523cc1">
     <startEvent id="startevent1" name="startevent1">
       <outgoing>startevent1-gateway1</outgoing>
     </startEvent>

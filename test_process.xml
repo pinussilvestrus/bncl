@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions id="definitions_14e29e37-0517-4b76-bcac-c54a5f5644d0" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
-  <process id="pid-3aea7a8c-ce45-4c67-aaa8-e6da784f5950">
+<definitions id="definitions_2cffda77-5043-4c78-b2f8-924eaf58ef0c" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="pid-9dccedd4-f8ef-43ec-8f2e-79b62a1cff7f">
     <startEvent id="startevent1" name="startevent1">
-      <outgoing>startevent1-endevent1</outgoing>
+      <outgoing>startevent1-gateway1</outgoing>
     </startEvent>
-    <endEvent id="endevent1" name="endevent1">
-      <incoming>startevent1-endevent1</incoming>
+    <userTask id="usertask1" name="dosomething">
+      <incoming>gateway1-usertask1</incoming>
+      <outgoing>usertask1-gateway2</outgoing>
+    </userTask>
+    <userTask id="usertask2">
+      <incoming>gateway1-usertask2</incoming>
+      <outgoing>usertask2-gateway2</outgoing>
+    </userTask>
+    <parallelGateway id="gateway1">
+      <incoming>startevent1-gateway1</incoming>
+      <outgoing>gateway1-usertask1</outgoing>
+      <outgoing>gateway1-usertask2</outgoing>
+    </parallelGateway>
+    <parallelGateway id="gateway2">
+      <incoming>usertask1-gateway2</incoming>
+      <incoming>usertask2-gateway2</incoming>
+      <outgoing>gateway2-endevent1</outgoing>
+    </parallelGateway>
+    <sequenceFlow id="startevent1-gateway1" sourceRef="startevent1" targetRef="gateway1"/>
+    <sequenceFlow id="gateway1-usertask1" sourceRef="gateway1" targetRef="usertask1"/>
+    <sequenceFlow id="gateway1-usertask2" sourceRef="gateway1" targetRef="usertask2"/>
+    <sequenceFlow id="usertask1-gateway2" sourceRef="usertask1" targetRef="gateway2"/>
+    <sequenceFlow id="usertask2-gateway2" sourceRef="usertask2" targetRef="gateway2"/>
+    <endEvent id="endevent1" name="terminated">
+      <incoming>gateway2-endevent1</incoming>
     </endEvent>
-    <sequenceFlow id="startevent1-endevent1" sourceRef="startevent1" targetRef="endevent1"/>
+    <sequenceFlow id="gateway2-endevent1" sourceRef="gateway2" targetRef="endevent1"/>
   </process>
 </definitions>
