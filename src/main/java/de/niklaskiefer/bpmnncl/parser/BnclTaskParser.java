@@ -1,10 +1,10 @@
 package de.niklaskiefer.bpmnncl.parser;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
-import org.camunda.bpm.model.bpmn.instance.EndEvent;
-import org.camunda.bpm.model.bpmn.instance.StartEvent;
+
 import org.camunda.bpm.model.bpmn.instance.UserTask;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,8 +15,11 @@ public class BnclTaskParser extends BnclElementParser {
 
     private final String USER_TASK_KEYWORD = "usertask";
 
+    private List<TaskElement> taskTypes = new ArrayList<>();
+
     public BnclTaskParser(BPMNModelBuilder builder) {
         super(builder);
+        initTaskTypes();
     }
 
     public void parseTask(String elementString) throws Exception {
@@ -31,16 +34,52 @@ public class BnclTaskParser extends BnclElementParser {
         }
 
         String id;
-        Class type;
-        switch (withoutSpaces.get(0).toLowerCase()) {
-            case USER_TASK_KEYWORD:
-                type = UserTask.class;
+        Class type = null;
+
+        String first = withoutSpaces.get(0).toLowerCase();
+        for(TaskElement task : taskTypes) {
+            if (first.equals(task.getKeyword())) {
+                type = task.taskType;
                 break;
-            default:
-                return;
+            }
         }
+
+        if (type == null) {
+            return;
+        }
+
 
         Map<String, String> attributes = parseAttributes(withoutSpaces);
         builder.createElement(builder.getProcess(), type, attributes);
+    }
+
+    private void initTaskTypes() {
+        this.taskTypes.add(new TaskElement("usertask", UserTask.class));
+    }
+
+    private class TaskElement {
+        private String keyword = "";
+        private Class taskType;
+
+        public TaskElement(String keyword, Class taskTyp) {
+            this.keyword = keyword;
+            this.taskType = taskTyp;
+        }
+
+        public Class getTaskType() {
+            return taskType;
+        }
+
+        public void setTaskType(Class taskType) {
+            this.taskType = taskType;
+        }
+
+        public String getKeyword() {
+            return keyword;
+        }
+
+        public void setKeyword(String keyword) {
+            this.keyword = keyword;
+        }
     }
 }
