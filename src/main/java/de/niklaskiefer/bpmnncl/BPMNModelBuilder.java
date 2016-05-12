@@ -30,6 +30,7 @@ public class BPMNModelBuilder {
         .done();
   }
 
+
   public Process createProcess() {
     String id = "pid-" + UUID.randomUUID().toString();
     process = createElement(bpmnModelInstance.getDefinitions(), id, Process.class);
@@ -40,6 +41,13 @@ public class BPMNModelBuilder {
     Definitions definitions = bpmnModelInstance.newInstance(Definitions.class);
     definitions.setTargetNamespace(CAMUNDA_NAMESPACE);
     bpmnModelInstance.setDefinitions(definitions);
+  }
+
+  public <T extends EventDefinition> T createEventDefinition(BpmnModelElementInstance parentElement, Process process, Class<T> eventDefinitionClass) {
+    T element = bpmnModelInstance.newInstance(eventDefinitionClass);
+    parentElement.addChildElement(element);
+    elements.add(element);
+    return element;
   }
 
   public SequenceFlow createSequenceFlow(Process process, String idFrom, String idTo) {

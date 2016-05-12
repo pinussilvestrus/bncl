@@ -35,16 +35,10 @@ public class BnclToXmlWriter {
         return xmlString;
     }
 
-    private BpmnModelInstance createBPMModelInstance(String bncl) {
+    private BpmnModelInstance createBPMModelInstance(String bncl) throws Exception {
         BnclParser parser = new BnclParser();
         BpmnModelInstance modelInstance;
-        try {
-            modelInstance = parser.parseBncl(bncl);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        modelInstance = parser.parseBncl(bncl);
         return modelInstance;
     }
 }

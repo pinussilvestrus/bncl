@@ -13,8 +13,8 @@ if success: .xml and .bpmn file is generated in same folder
 
 ----------
 
-BNCL-structure (08.05.2016)
----------------------------
+BNCL-structure (12.05.2016) - STILL UNDER DEVELOPMENT
+-----------------------------------------------------
 
 everything in bncl is case insensitive, but it is always a good idea to write it in small letters.
 
@@ -30,15 +30,23 @@ is a keyword that signs the beginning of a process element
 
 signs a sequence workflow between process elements. **comesfrom** with given id signs the fromElement, **goesto** signes the toElement.
 
- ** normal elements:**
-
+ **normal events:**
  - startevent
  - endevent
+ - catchevent (Intermediate)
+ - throevent (Intermediate)
+ 
+ **special events:**
+ - messagestartevent
+ - messageendevent
+ 
+ **tasks:**
  - usertask
+ 
+ **gateways:**
  - parallelgateway
  
 
 **attributes:**
-
  - called = name
  - signed (required) = id

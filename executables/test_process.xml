@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions id="definitions_4250a46d-e438-40ea-9681-27a53d348903" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
-  <process id="pid-694eac07-8e09-43ff-9fba-94630a523cc1">
-    <startEvent id="startevent1" name="startevent1">
-      <outgoing>startevent1-gateway1</outgoing>
-    </startEvent>
-    <userTask id="usertask1" name="dosomething">
-      <incoming>gateway1-usertask1</incoming>
-      <outgoing>usertask1-gateway2</outgoing>
-    </userTask>
-    <userTask id="usertask2">
-      <incoming>gateway1-usertask2</incoming>
-      <outgoing>usertask2-gateway2</outgoing>
-    </userTask>
-    <parallelGateway id="gateway1">
-      <incoming>startevent1-gateway1</incoming>
-      <outgoing>gateway1-usertask1</outgoing>
-      <outgoing>gateway1-usertask2</outgoing>
-    </parallelGateway>
-    <parallelGateway id="gateway2">
-      <incoming>usertask1-gateway2</incoming>
-      <incoming>usertask2-gateway2</incoming>
-      <outgoing>gateway2-endevent1</outgoing>
-    </parallelGateway>
-    <sequenceFlow id="startevent1-gateway1" sourceRef="startevent1" targetRef="gateway1"/>
-    <sequenceFlow id="gateway1-usertask1" sourceRef="gateway1" targetRef="usertask1"/>
-    <sequenceFlow id="gateway1-usertask2" sourceRef="gateway1" targetRef="usertask2"/>
-    <sequenceFlow id="usertask1-gateway2" sourceRef="usertask1" targetRef="gateway2"/>
-    <sequenceFlow id="usertask2-gateway2" sourceRef="usertask2" targetRef="gateway2"/>
-    <endEvent id="endevent1" name="terminated">
-      <incoming>gateway2-endevent1</incoming>
-    </endEvent>
-    <sequenceFlow id="gateway2-endevent1" sourceRef="gateway2" targetRef="endevent1"/>
+<definitions id="definitions_16b79463-e517-4904-82a2-180e39010901" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="pid-68e10e9e-8a75-40f4-b98b-dd6060b95ade">
+    <endEvent id="endevent1" name="aevent"/>
   </process>
 </definitions>
