@@ -39,6 +39,8 @@ signs a sequence workflow between process elements. **comesfrom** with given id 
  **special events:**
  - messagestartevent
  - messageendevent
+ - messagethrowevent
+ - messagecatchevent
  
  **tasks:**
  - usertask

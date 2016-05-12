@@ -25,7 +25,7 @@ public class BnclEventParser extends BnclElementParser {
         initEventTypes();
     }
 
-    public void parseEvent(String elementString) throws Exception {
+    public BpmnModelElementInstance parseEvent(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
         String id;
@@ -33,7 +33,7 @@ public class BnclEventParser extends BnclElementParser {
         Class definitionType = null;
 
         if(!BnclParser.checkWords(withoutSpaces)) {
-            return;
+            return null;
         }
 
         //logger().info(withoutSpaces.get(0).toLowerCase());
@@ -50,7 +50,7 @@ public class BnclEventParser extends BnclElementParser {
         }
 
         if (type == null) {
-            return;
+            return null;
         }
 
         Map<String, String> attributes = parseAttributes(withoutSpaces);
@@ -61,6 +61,8 @@ public class BnclEventParser extends BnclElementParser {
             builder.createEventDefinition(elementInstance, builder.getProcess(), definitionType);
         }
 
+        return elementInstance;
+
     }
 
     private void initEventTypes() {
@@ -69,7 +71,9 @@ public class BnclEventParser extends BnclElementParser {
         this.eventTypes.add(new EventElement("endevent", EndEvent.class));
         this.eventTypes.add(new EventElement("messageendevent", EndEvent.class, MessageEventDefinition.class));
         this.eventTypes.add(new EventElement("catchevent", IntermediateCatchEvent.class));
+        this.eventTypes.add(new EventElement("messagecatchevent", IntermediateCatchEvent.class, MessageEventDefinition.class));
         this.eventTypes.add(new EventElement("throwevent", IntermediateThrowEvent.class));
+        this.eventTypes.add(new EventElement("messagethrowevent", IntermediateThrowEvent.class, MessageEventDefinition.class));
     }
 
     private class EventElement {

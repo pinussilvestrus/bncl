@@ -4,6 +4,8 @@ import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
 import java.util.List;
 
+import org.camunda.bpm.model.bpmn.instance.SequenceFlow;
+
 /**
  * @author Niklas Kiefer
  */
@@ -21,7 +23,7 @@ public class BnclSequenceFlowParser extends AbstractBnclParser {
         this.builder = builder;
     }
 
-    public void parseSequenceFlow(String elementString) {
+    public SequenceFlow parseSequenceFlow(String elementString) {
         List<String> wordsWithoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
         /**for (String word : wordsWithoutSpaces) {
@@ -29,7 +31,7 @@ public class BnclSequenceFlowParser extends AbstractBnclParser {
         }**/
 
         if(!BnclParser.checkWords(wordsWithoutSpaces)) {
-         return;
+         return null;
         }
 
         String fromId = "";
@@ -50,7 +52,9 @@ public class BnclSequenceFlowParser extends AbstractBnclParser {
         }
 
         if (!fromId.equals("") && !toId.equals("")) {
-            builder.createSequenceFlow(builder.getProcess(), fromId, toId);
+            return builder.createSequenceFlow(builder.getProcess(), fromId, toId);
         }
+
+        return null;
     }
 }

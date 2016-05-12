@@ -2,6 +2,7 @@ package de.niklaskiefer.bpmnncl.parser;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
+import org.camunda.bpm.model.bpmn.instance.BpmnModelElementInstance;
 import org.camunda.bpm.model.bpmn.instance.UserTask;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class BnclTaskParser extends BnclElementParser {
         initTaskTypes();
     }
 
-    public void parseTask(String elementString) throws Exception {
+    public BpmnModelElementInstance parseTask(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
         /**for (String word : withoutSpaces) {
@@ -30,7 +31,7 @@ public class BnclTaskParser extends BnclElementParser {
          }**/
 
         if(!BnclParser.checkWords(withoutSpaces)) {
-            return;
+            return null;
         }
 
         String id;
@@ -45,12 +46,12 @@ public class BnclTaskParser extends BnclElementParser {
         }
 
         if (type == null) {
-            return;
+            return null;
         }
 
 
         Map<String, String> attributes = parseAttributes(withoutSpaces);
-        builder.createElement(builder.getProcess(), type, attributes);
+        return builder.createElement(builder.getProcess(), type, attributes);
     }
 
     private void initTaskTypes() {

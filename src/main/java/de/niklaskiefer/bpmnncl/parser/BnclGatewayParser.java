@@ -1,6 +1,8 @@
 package de.niklaskiefer.bpmnncl.parser;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
+
+import org.camunda.bpm.model.bpmn.instance.Gateway;
 import org.camunda.bpm.model.bpmn.instance.ParallelGateway;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public class BnclGatewayParser extends BnclElementParser {
         super(builder);
     }
 
-    public void parseGateway(String elementString) throws Exception {
+    public Gateway parseGateway(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
         /**for (String word : withoutSpaces) {
@@ -29,16 +31,15 @@ public class BnclGatewayParser extends BnclElementParser {
         Class type;
 
         if(!BnclParser.checkWords(withoutSpaces)) {
-            return;
+            return null;
         }
 
         switch (withoutSpaces.get(0).toLowerCase()) {
             case PARALLEL_GATEWAY:
                 Map<String, String> attributes = parseAttributes(withoutSpaces);
-                builder.createParallelGateway(builder.getProcess(), attributes);
-                break;
+                return builder.createParallelGateway(builder.getProcess(), attributes);
             default:
-                return;
+                return null;
         }
     }
 }
