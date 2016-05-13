@@ -73,7 +73,7 @@ public class BnclParser extends AbstractBnclParser {
     try {
       copy = copy.substring(bnclString.indexOf(BEGINNING_GROUP) + BEGINNING_GROUP.length() + 1, copy.length());
     } catch (StringIndexOutOfBoundsException e) {
-      System.exit(1);
+      throw e;
     }
 
     builder.createDefinitions();

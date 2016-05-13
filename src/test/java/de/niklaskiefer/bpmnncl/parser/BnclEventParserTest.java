@@ -1,4 +1,4 @@
-package de.niklaskiefer.bpmnncl;
+package de.niklaskiefer.bpmnncl.parser;
 
 import org.camunda.bpm.model.bpmn.instance.BpmnModelElementInstance;
 import org.camunda.bpm.model.bpmn.instance.IntermediateCatchEvent;
@@ -8,6 +8,7 @@ import org.camunda.bpm.model.bpmn.instance.StartEvent;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 import de.niklaskiefer.bpmnncl.parser.BnclEventParser;
 
 import static org.junit.Assert.*;

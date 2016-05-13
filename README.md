@@ -3,7 +3,7 @@ natural like creation language for bpmn-process-models, based on java and bpmn 2
 
 find runnable in subfolder **executables**
 
-> java -jar bncl-<versionNr.>.jar
+> java -jar bncl-[versionNr.].jar
 
 **example bcnl-statement:**
 
@@ -30,24 +30,29 @@ is a keyword that signs the beginning of a process element
 
 signs a sequence workflow between process elements. **comesfrom** with given id signs the fromElement, **goesto** signes the toElement.
 
- **normal events:**
+**normal events:**
  - startevent
  - endevent
  - catchevent (Intermediate)
  - throevent (Intermediate)
  
- **special events:**
+**special events:**
  - messagestartevent
  - messageendevent
  - messagethrowevent
  - messagecatchevent
  
- **tasks:**
+**tasks:**
  - usertask
+ - sendtask (Message)
+ - receivetask (Message)
+ - scripttask
+ - manualtask
+ - businessruletask
+ - servicetask
  
- **gateways:**
+**gateways:**
  - parallelgateway
- 
 
 **attributes:**
  - called = name

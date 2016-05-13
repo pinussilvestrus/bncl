@@ -23,7 +23,7 @@ public class BnclToXmlWriterTest {
     public void testCreateBPMNFile() {
         try {
             String xml = bnclToXmlWriter.createBPMNFile(testBncl);
-            assertNotNull(xml);
+            assertNotNull(xml); // todo: test xml components
         } catch (Exception e) {
             assertEquals(1, 2); //test failed
             e.printStackTrace();

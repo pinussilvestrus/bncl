@@ -103,17 +103,6 @@ public class BPMNModelBuilder {
     return bpmnModelInstance;
   }
 
-  @Deprecated
-  public void createTestElements(Process process) {
-    StartEvent startEvent = createElement(process, "start", StartEvent.class);
-    UserTask task1 = createElement(process, "task1", UserTask.class);
-    task1.setName("User Task");
-    EndEvent endEvent = createElement(process, "end", EndEvent.class);
-
-    // create the connections between the elements
-    createSequenceFlow(process, startEvent, task1);
-    createSequenceFlow(process, task1, endEvent);
-  }
 
   public Process getProcess() {
     return process;

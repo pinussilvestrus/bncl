@@ -99,24 +99,10 @@ public class BnclEventParser extends BnclElementParser {
             return definitionType;
         }
 
-        public void setDefinitionType(Class definitionType) {
-            this.definitionType = definitionType;
-        }
-
-        public Class getEventType() {
-            return eventType;
-        }
-
-        public void setEventType(Class eventType) {
-            this.eventType = eventType;
-        }
 
         public String getKeyword() {
             return keyword;
         }
 
-        public void setKeyword(String keyword) {
-            this.keyword = keyword;
-        }
     }
 }
