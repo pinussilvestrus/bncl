@@ -1,13 +1,16 @@
 ![alt text](logo.png)
 
 natural like creation language for bpmn-process-models, based on java and bpmn 2.0 xml
-*by Niklas Kiefer*
+
+[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl)
+
+feel free to contribute. Just create an issue or create a pull request.
 
 find runnable in subfolder **executables**
 
 > java -jar bncl-[versionNr.].jar
 
-**example bcnl-statement:**
+**example bncl-statement:**
 
 > lets create a process with startevent signed startEvent1 called startevent1 with usertask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1
 
