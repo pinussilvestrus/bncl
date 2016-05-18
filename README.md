@@ -1,3 +1,5 @@
+![alt text](logo.png)
+
 natural like creation language for bpmn-process-models, based on java and bpmn 2.0 xml
 *by Niklas Kiefer*
 
@@ -35,13 +37,13 @@ signs a sequence workflow between process elements. **comesfrom** with given id 
  - endevent
  - catchevent (Intermediate)
  - throevent (Intermediate)
- 
+
 **special events:**
  - messagestartevent
  - messageendevent
  - messagethrowevent
  - messagecatchevent
- 
+
 **tasks:**
  - usertask
  - sendtask (Message)
@@ -50,7 +52,7 @@ signs a sequence workflow between process elements. **comesfrom** with given id 
  - manualtask
  - businessruletask
  - servicetask
- 
+
 **gateways:**
  - parallelgateway
 
