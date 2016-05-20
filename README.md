@@ -1,25 +1,51 @@
 ![alt text](logo.png)
 
-natural like creation language for bpmn-process-models, based on java and bpmn 2.0 xml
-
 [![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl)
 
-feel free to contribute. Just create an issue or create a pull request.
+Introduction
+------------
 
-find runnable in subfolder **executables**
+**Bncl** (binkel) ist a natural like creation language for bpmn-process-models, based on java and bpmn 2.0 xml
+Powered by Camunda's [BPMN Model API](https://github.com/camunda/camunda-bpmn-model) .
+To execute the CLI and convert a bncl statement to bpmn, find a runnable in subfolder **executables**.
 
-> java -jar bncl-[versionNr.].jar
+```shell
+$ java -jar bncl-[versionNr.].jar
+```
 
 **example bncl-statement:**
 
 > lets create a process with startevent signed startEvent1 called startevent1 with usertask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1
 
-if success: .xml and .bpmn file is generated in same folder
 
-----------
+If it was successful, a .xml and .bpmn file is generated in same folder. Open one file in your favorite BPMN-Editor, like
+ - [Camunda Modeler](https://camunda.org/bpmn/tool/)
+ - [Signavio](http://www.signavio.com/)
+ - [BPMN.io](https://bpmn.io/)
+ - [Yaoqiang Modeler](https://sourceforge.net/projects/bpmn/)
 
-BNCL-structure (12.05.2016) - STILL UNDER DEVELOPMENT
------------------------------------------------------
+Development
+-----------
+
+Bncl is a Gradle-Project!
+
+**build a jar**
+```shell
+$ ./gradlew build
+```
+
+**run tests**
+```shell
+$ ./gradlew check
+```
+
+Feel free to contribute. Just create an issue or create a pull request.
+
+
+BNCL-structure
+--------------
+
+(12.05.2016) - STILL UNDER DEVELOPMENT
 
 everything in bncl is case insensitive, but it is always a good idea to write it in small letters.
 
