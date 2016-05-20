@@ -1,6 +1,12 @@
 ![alt text](logo.png)
 
-[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl)
+[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/develop.svg)](https://codecov.io/github/pinussilvestrus/bncl?branch=master)
+
+**Table of Contents**
+
+- [Introduction](#)
+- [Development](#)
+- [BNCL-structure](#)
 
 Introduction
 ------------
