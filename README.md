@@ -4,12 +4,11 @@
 
 **Table of Contents**
 
-- [Introduction](#)
-- [Development](#)
-- [BNCL-structure](#)
+- [Introduction](#introduction)
+- [Development](#development)
+- [BNCL-structure](#bncl-structure)
 
-Introduction
-------------
+## Introduction
 
 **Bncl** (binkel) ist a natural like creation language for bpmn-process-models, based on java and bpmn 2.0 xml
 Powered by Camunda's [BPMN Model API](https://github.com/camunda/camunda-bpmn-model) .
@@ -30,8 +29,7 @@ If it was successful, a .xml and .bpmn file is generated in same folder. Open on
  - [BPMN.io](https://bpmn.io/)
  - [Yaoqiang Modeler](https://sourceforge.net/projects/bpmn/)
 
-Development
------------
+## Development
 
 Bncl is a Gradle-Project!
 
@@ -48,8 +46,7 @@ $ ./gradlew check
 Feel free to contribute. Just create an issue or create a pull request.
 
 
-BNCL-structure
---------------
+## BNCL-structure
 
 (12.05.2016) - STILL UNDER DEVELOPMENT
 
