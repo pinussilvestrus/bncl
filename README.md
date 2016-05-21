@@ -1,6 +1,6 @@
 ![alt text](logo.png)
 
-[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/master.svg)](https://codecov.io/github/pinussilvestrus/bncl?branch=master)
+[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/master.svg)](https://codecov.io/github/pinussilvestrus/bncl?branch=master) [![Version](https://img.shields.io/github/release/pinussilvestrus/bncl.svg)](https://github.com/pinussilvestrus/bncl/releases)
 
 **Table of Contents**
 
@@ -13,7 +13,7 @@ Introduction
 
 **Bncl** (binkel) ist a natural like creation language for bpmn-process-models, based on java and bpmn 2.0 xml
 Powered by Camunda's [BPMN Model API](https://github.com/camunda/camunda-bpmn-model) .
-To execute the CLI and convert a bncl statement to bpmn, find a runnable in subfolder **executables**.
+To execute the CLI and convert a bncl statement to bpmn, download the current [release-version](https://github.com/pinussilvestrus/bncl/releases).
 
 ```shell
 $ java -jar bncl-[versionNr.].jar
