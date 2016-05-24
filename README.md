@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/master.svg)](https://codecov.io/github/pinussilvestrus/bncl?branch=master) [![Version](https://img.shields.io/github/release/pinussilvestrus/bncl.svg)](https://github.com/pinussilvestrus/bncl/releases)
 
+Software by [Niklas Kiefer](https://www.niklaskiefer.de/) ([andserve](https://andserve.net/))
+
 **Table of Contents**
 
 - [Introduction](#introduction)
