@@ -3,7 +3,6 @@ package de.niklaskiefer.bpmnncl.parser;
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
 import org.camunda.bpm.model.bpmn.instance.Gateway;
-import org.camunda.bpm.model.bpmn.instance.ParallelGateway;
 
 import java.util.List;
 import java.util.Map;
@@ -30,7 +29,7 @@ public class BnclGatewayParser extends BnclElementParser {
         String id;
         Class type;
 
-        if(!BnclParser.checkWords(withoutSpaces)) {
+        if (!BnclParser.checkWords(withoutSpaces)) {
             return null;
         }
 

@@ -32,14 +32,14 @@ public class BnclEventParser extends BnclElementParser {
         Class type = null;
         Class definitionType = null;
 
-        if(!BnclParser.checkWords(withoutSpaces)) {
+        if (!BnclParser.checkWords(withoutSpaces)) {
             return null;
         }
 
         //logger().info(withoutSpaces.get(0).toLowerCase());
 
         String first = withoutSpaces.get(0).toLowerCase();
-        for(EventElement event : eventTypes) {
+        for (EventElement event : eventTypes) {
             if (first.equals(event.getKeyword())) {
                 type = event.eventType;
                 if (event.getDefinitionType() != null) {
@@ -76,7 +76,7 @@ public class BnclEventParser extends BnclElementParser {
         this.eventTypes.add(new EventElement("messagethrowevent", IntermediateThrowEvent.class, MessageEventDefinition.class));
     }
 
-    private class EventElement {
+    private static class EventElement {
 
         private String keyword = "";
 

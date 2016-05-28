@@ -1,13 +1,13 @@
 package de.niklaskiefer.bpmnncl;
 
+import de.niklaskiefer.bpmnncl.parser.BnclParser;
+
 import org.camunda.bpm.model.bpmn.Bpmn;
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import de.niklaskiefer.bpmnncl.parser.BnclParser;
 
 /**
  * @author Niklas Kiefer

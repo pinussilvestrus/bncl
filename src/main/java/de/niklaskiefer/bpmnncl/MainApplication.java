@@ -1,7 +1,6 @@
 package de.niklaskiefer.bpmnncl;
 
 import java.io.Console;
-import java.util.Scanner;
 
 /**
  * @author Niklas Kiefer
@@ -19,7 +18,7 @@ public class MainApplication {
         Console console = null;
         String input = null;
 
-        try{
+        try {
 
             console = System.console();
             if (console != null) {
@@ -31,7 +30,7 @@ public class MainApplication {
                 BnclToXmlWriter writer = new BnclToXmlWriter();
                 writer.createBPMNFile(testBncl);
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Oh, there was a problem in parsing Bncl!");
         }

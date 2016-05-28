@@ -7,9 +7,9 @@ import org.junit.Test;
  */
 public class MainApplicationTest {
 
-  @Test
-  public void testMain() {
-    MainApplication.main(new String[]{});
-  }
+    @Test
+    public void testMain() {
+        MainApplication.main(new String[]{});
+    }
 
 }

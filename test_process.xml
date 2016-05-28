@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions id="definitions_042a567d-d331-4a0b-bfbd-85ae2a5da2eb" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
-  <process id="pid-75e5b8dc-34d3-4356-aa6c-52761c8fa38a">
+<definitions id="definitions_2566b41d-e55f-40ec-af3b-fbc7dea016af" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="pid-685ee05a-b21b-412d-9af8-efceb58f46d5">
     <startEvent id="startevent1" name="startevent1">
       <outgoing>startevent1-gateway1</outgoing>
-      <messageEventDefinition id="messageEventDefinition_ba5728b9-ccef-4e89-bb3e-26cf711d6dbc"/>
+      <messageEventDefinition id="messageEventDefinition_8da0bddd-dc37-4b41-b08d-36d27d536188"/>
     </startEvent>
     <scriptTask id="usertask1" name="dosomething">
       <incoming>gateway1-usertask1</incoming>
@@ -30,7 +30,7 @@
     <sequenceFlow id="usertask2-gateway2" sourceRef="usertask2" targetRef="gateway2"/>
     <intermediateThrowEvent id="endevent1" name="terminated">
       <incoming>gateway2-endevent1</incoming>
-      <messageEventDefinition id="messageEventDefinition_3a4b6832-a232-4fd2-9923-4cd64cf32953"/>
+      <messageEventDefinition id="messageEventDefinition_550c251c-2e1e-4079-ba31-301f8949c8cf"/>
     </intermediateThrowEvent>
     <sequenceFlow id="gateway2-endevent1" sourceRef="gateway2" targetRef="endevent1"/>
   </process>

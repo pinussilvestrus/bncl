@@ -2,20 +2,20 @@ package de.niklaskiefer.bpmnncl.parser;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
-import java.util.List;
-
 import org.camunda.bpm.model.bpmn.instance.SequenceFlow;
+
+import java.util.List;
 
 /**
  * @author Niklas Kiefer
  */
 public class BnclSequenceFlowParser extends AbstractBnclParser {
 
-    private final String SEQUENCE_FLOW_KEYWORD = "sequenceflow";
+    private static final String SEQUENCE_FLOW_KEYWORD = "sequenceflow";
 
     // attributes
-    private final String COMES_FROM = "comesfrom";
-    private final String GOES_TO = "goesto";
+    private static final String COMES_FROM = "comesfrom";
+    private static final String GOES_TO = "goesto";
 
     private BPMNModelBuilder builder;
 
@@ -28,10 +28,10 @@ public class BnclSequenceFlowParser extends AbstractBnclParser {
 
         /**for (String word : wordsWithoutSpaces) {
          logger().info(word);
-        }**/
+         }**/
 
-        if(!BnclParser.checkWords(wordsWithoutSpaces)) {
-         return null;
+        if (!BnclParser.checkWords(wordsWithoutSpaces)) {
+            return null;
         }
 
         String fromId = "";
@@ -41,12 +41,13 @@ public class BnclSequenceFlowParser extends AbstractBnclParser {
                 String word = wordsWithoutSpaces.get(i);
                 switch (word.toLowerCase()) {
                     case COMES_FROM:
-                        fromId = wordsWithoutSpaces.get(i+1);
+                        fromId = wordsWithoutSpaces.get(i + 1);
                         break;
                     case GOES_TO:
-                        toId = wordsWithoutSpaces.get(i+1);
+                        toId = wordsWithoutSpaces.get(i + 1);
                         break;
-                    default: break;
+                    default:
+                        break;
                 }
             }
         }

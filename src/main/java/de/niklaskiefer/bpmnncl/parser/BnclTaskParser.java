@@ -20,8 +20,6 @@ import java.util.Map;
  */
 public class BnclTaskParser extends BnclElementParser {
 
-    private final String USER_TASK_KEYWORD = "usertask";
-
     private List<TaskElement> taskTypes = new ArrayList<>();
 
     public BnclTaskParser(BPMNModelBuilder builder) {
@@ -36,7 +34,7 @@ public class BnclTaskParser extends BnclElementParser {
          logger().info(word);
          }**/
 
-        if(!BnclParser.checkWords(withoutSpaces)) {
+        if (!BnclParser.checkWords(withoutSpaces)) {
             return null;
         }
 
@@ -44,7 +42,7 @@ public class BnclTaskParser extends BnclElementParser {
         Class type = null;
 
         String first = withoutSpaces.get(0).toLowerCase();
-        for(TaskElement task : taskTypes) {
+        for (TaskElement task : taskTypes) {
             if (first.equals(task.getKeyword())) {
                 type = task.getTaskType();
                 break;
@@ -70,7 +68,7 @@ public class BnclTaskParser extends BnclElementParser {
         this.taskTypes.add(new TaskElement("scripttask", ScriptTask.class));
     }
 
-    private class TaskElement {
+    private static class TaskElement {
         private String keyword = "";
         private Class taskType;
 
