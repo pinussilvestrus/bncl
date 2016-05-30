@@ -70,7 +70,7 @@ signs a sequence workflow between process elements. **comesfrom** with given id 
  - startevent
  - endevent
  - catchevent (Intermediate)
- - throevent (Intermediate)
+ - throwevent (Intermediate)
 
 **special events:**
  - messagestartevent
