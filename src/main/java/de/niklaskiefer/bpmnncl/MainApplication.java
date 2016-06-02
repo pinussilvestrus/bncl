@@ -8,7 +8,7 @@ import java.io.Console;
 public class MainApplication {
 
     private static String testBncl =
-            "lets create a process with messagestartevent signed startEvent1 called startevent1 with scripttask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with messagethrowevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1";
+            "lets create a process with messagestartevent signed startEvent1 called message incoming with scripttask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with messagethrowevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1";
 
     public static void main(String[] args) {
         startConsoleProgram();
