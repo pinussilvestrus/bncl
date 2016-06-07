@@ -50,7 +50,7 @@ Feel free to contribute. Just create an issue or create a pull request.
 
 ## BNCL-structure
 
-(12.05.2016) - STILL UNDER DEVELOPMENT
+(07.06.2016) - STILL UNDER DEVELOPMENT
 
 everything in bncl is case insensitive, but it is always a good idea to write it in small letters.
 
@@ -77,6 +77,17 @@ signs a sequence workflow between process elements. **comesfrom** with given id 
  - messageendevent
  - messagethrowevent
  - messagecatchevent
+ - timerevent
+ - timerstartevent
+ - errorevent
+ - errorstartevent
+ - conditionalevent
+ - conditionalstartevent
+ - linkevent
+ - signalcatchevent
+ - signalthrowevent
+ - signalstartevent
+ - signalendevent
 
 **tasks:**
  - usertask
