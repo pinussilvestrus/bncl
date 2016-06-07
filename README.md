@@ -81,13 +81,21 @@ signs a sequence workflow between process elements. **comesfrom** with given id 
  - timerstartevent
  - errorevent
  - errorstartevent
- - conditionalevent
- - conditionalstartevent
- - linkevent
  - signalcatchevent
  - signalthrowevent
  - signalstartevent
  - signalendevent
+ - escalationcatchevent
+ - escalationthrowevent
+ - escalationstartevent
+ - escalationendevent
+ - terminationevent
+ - compensationcatchevent
+ - compensationthrowevent
+ - compensationstartevent
+ - compensationendevent
+ - cancelevent
+ - cancelendevent
 
 **tasks:**
  - usertask

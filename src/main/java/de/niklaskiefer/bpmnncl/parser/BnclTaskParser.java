@@ -27,6 +27,10 @@ public class BnclTaskParser extends BnclElementParser {
         initTaskTypes();
     }
 
+    public BnclTaskParser() {
+        initTaskTypes();
+    }
+
     public BpmnModelElementInstance parseTask(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
@@ -58,6 +62,10 @@ public class BnclTaskParser extends BnclElementParser {
         return builder.createElement(builder.getProcess(), type, attributes);
     }
 
+    public List<TaskElement> getTaskTypes() {
+        return this.taskTypes;
+    }
+
     private void initTaskTypes() {
         this.taskTypes.add(new TaskElement("usertask", UserTask.class));
         this.taskTypes.add(new TaskElement("sendtask", SendTask.class));
@@ -68,7 +76,7 @@ public class BnclTaskParser extends BnclElementParser {
         this.taskTypes.add(new TaskElement("scripttask", ScriptTask.class));
     }
 
-    private static class TaskElement {
+    public static class TaskElement {
         private String keyword = "";
         private Class taskType;
 
