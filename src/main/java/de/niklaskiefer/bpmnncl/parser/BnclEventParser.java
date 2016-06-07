@@ -20,6 +20,10 @@ public class BnclEventParser extends BnclElementParser {
         initEventTypes();
     }
 
+    public BnclEventParser() {
+        initEventTypes();
+    }
+
     public BpmnModelElementInstance parseEvent(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
@@ -60,6 +64,10 @@ public class BnclEventParser extends BnclElementParser {
 
     }
 
+    public List<EventElement> getEventTypes() {
+        return this.eventTypes;
+    }
+
     private void initEventTypes() {
         this.eventTypes.add(new EventElement("startevent", StartEvent.class));
         this.eventTypes.add(new EventElement("messagestartevent", StartEvent.class, MessageEventDefinition.class));
@@ -73,20 +81,38 @@ public class BnclEventParser extends BnclElementParser {
         this.eventTypes.add(new EventElement("timerstartevent", StartEvent.class, TimerEventDefinition.class));
         this.eventTypes.add(new EventElement("errorevent", IntermediateCatchEvent.class, ErrorEventDefinition.class));
         this.eventTypes.add(new EventElement("errorstartevent", StartEvent.class, ErrorEventDefinition.class));
-        this.eventTypes.add(new EventElement("conditionalevent", IntermediateCatchEvent.class,
-                ConditionalEventDefinition.class));
-        this.eventTypes.add(new EventElement("conditionalstartevent", StartEvent.class, ConditionalEventDefinition
-                .class));
-        this.eventTypes.add(new EventElement("linkevent", IntermediateCatchEvent.class, LinkEventDefinition.class));
+        /**
+         this.eventTypes.add(new EventElement("conditionalevent", IntermediateCatchEvent.class,
+         ConditionalEventDefinition.class));
+         this.eventTypes.add(new EventElement("conditionalstartevent", StartEvent.class, ConditionalEventDefinition
+         .class));
+         this.eventTypes.add(new EventElement("linkevent", IntermediateCatchEvent.class, LinkEventDefinition.class));**/
         this.eventTypes.add(new EventElement("signalcatchevent", IntermediateCatchEvent.class, SignalEventDefinition
                 .class));
         this.eventTypes.add(new EventElement("signalthrowevent", IntermediateThrowEvent.class, SignalEventDefinition
                 .class));
         this.eventTypes.add(new EventElement("signalstartevent", StartEvent.class, SignalEventDefinition.class));
         this.eventTypes.add(new EventElement("signalendevent", EndEvent.class, SignalEventDefinition.class));
+        this.eventTypes.add(new EventElement("escalationcatchevent", IntermediateCatchEvent.class,
+                EscalationEventDefinition.class));
+        this.eventTypes.add(new EventElement("escalationthrowevent", IntermediateThrowEvent.class,
+                EscalationEventDefinition.class));
+        this.eventTypes.add(new EventElement("escalationstartevent", StartEvent.class, EscalationEventDefinition
+                .class));
+        this.eventTypes.add(new EventElement("escalationendevent", EndEvent.class, EscalationEventDefinition.class));
+        this.eventTypes.add(new EventElement("terminationevent", EndEvent.class, TerminateEventDefinition.class));
+        this.eventTypes.add(new EventElement("compensationcatchevent", IntermediateCatchEvent.class,
+                CompensateEventDefinition.class));
+        this.eventTypes.add(new EventElement("compensationthrowevent", IntermediateThrowEvent.class,
+                CompensateEventDefinition.class));
+        this.eventTypes.add(new EventElement("compensationstartevent", StartEvent.class, CompensateEventDefinition
+                .class));
+        this.eventTypes.add(new EventElement("compensationendevent", EndEvent.class, CompensateEventDefinition.class));
+        this.eventTypes.add(new EventElement("cancelevent", IntermediateCatchEvent.class, CancelEventDefinition.class));
+        this.eventTypes.add(new EventElement("cancelendevent", EndEvent.class, CancelEventDefinition.class));
     }
 
-    private static class EventElement {
+    public static class EventElement {
 
         private String keyword = "";
 

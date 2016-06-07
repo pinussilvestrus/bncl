@@ -25,6 +25,9 @@ public class BnclElementParser extends AbstractBnclParser {
         initAttributeTypes();
     }
 
+    public BnclElementParser() {
+    }
+
     protected Map<String, String> parseAttributes(List<String> components) throws Exception {
         Map<String, String> attributes = new HashMap<>();
         int i = 0;
