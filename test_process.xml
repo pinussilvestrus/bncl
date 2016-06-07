@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions id="definitions_763c40fc-5b0a-4fee-8d87-9d6fa0929767" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
-  <process id="pid-da84ee54-165a-4f09-b3fb-4e015e8efef6">
+<definitions id="definitions_fc02e725-cf1f-4f3e-81c0-7954ea38c558" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="pid-cfd0a180-1a2f-480d-9712-f30b3be08a2b">
     <startEvent id="startevent1" name="message incoming">
-      <outgoing>startevent1-gateway1</outgoing>
-      <messageEventDefinition id="messageEventDefinition_9d1c1107-7911-416f-9241-be4bf18fdf83"/>
+      <outgoing>startevent1-event1</outgoing>
+      <messageEventDefinition id="messageEventDefinition_a116fb5a-75ae-413f-96eb-486ad9956639"/>
     </startEvent>
+    <intermediateThrowEvent id="event1" name="3 stunden vergangen">
+      <incoming>startevent1-event1</incoming>
+      <outgoing>event1-gateway1</outgoing>
+      <timerEventDefinition id="timerEventDefinition_69969e49-bec6-4c33-9ce4-d93a5405483c"/>
+    </intermediateThrowEvent>
     <scriptTask id="usertask1" name="dosomething">
       <incoming>gateway1-usertask1</incoming>
       <outgoing>usertask1-gateway2</outgoing>
@@ -14,7 +19,7 @@
       <outgoing>usertask2-gateway2</outgoing>
     </userTask>
     <parallelGateway id="gateway1">
-      <incoming>startevent1-gateway1</incoming>
+      <incoming>event1-gateway1</incoming>
       <outgoing>gateway1-usertask1</outgoing>
       <outgoing>gateway1-usertask2</outgoing>
     </parallelGateway>
@@ -23,14 +28,15 @@
       <incoming>usertask2-gateway2</incoming>
       <outgoing>gateway2-endevent1</outgoing>
     </parallelGateway>
-    <sequenceFlow id="startevent1-gateway1" sourceRef="startevent1" targetRef="gateway1"/>
+    <sequenceFlow id="startevent1-event1" sourceRef="startevent1" targetRef="event1"/>
+    <sequenceFlow id="event1-gateway1" sourceRef="event1" targetRef="gateway1"/>
     <sequenceFlow id="gateway1-usertask1" sourceRef="gateway1" targetRef="usertask1"/>
     <sequenceFlow id="gateway1-usertask2" sourceRef="gateway1" targetRef="usertask2"/>
     <sequenceFlow id="usertask1-gateway2" sourceRef="usertask1" targetRef="gateway2"/>
     <sequenceFlow id="usertask2-gateway2" sourceRef="usertask2" targetRef="gateway2"/>
     <intermediateThrowEvent id="endevent1" name="terminated">
       <incoming>gateway2-endevent1</incoming>
-      <messageEventDefinition id="messageEventDefinition_f15cf0b2-22bd-42c3-892e-d9b148515c9e"/>
+      <messageEventDefinition id="messageEventDefinition_8c16b844-b242-4689-83d3-03c2ca48e1df"/>
     </intermediateThrowEvent>
     <sequenceFlow id="gateway2-endevent1" sourceRef="gateway2" targetRef="endevent1"/>
   </process>

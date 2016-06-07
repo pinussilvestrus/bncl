@@ -2,12 +2,7 @@ package de.niklaskiefer.bpmnncl.parser;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
-import org.camunda.bpm.model.bpmn.instance.BpmnModelElementInstance;
-import org.camunda.bpm.model.bpmn.instance.EndEvent;
-import org.camunda.bpm.model.bpmn.instance.IntermediateCatchEvent;
-import org.camunda.bpm.model.bpmn.instance.IntermediateThrowEvent;
-import org.camunda.bpm.model.bpmn.instance.MessageEventDefinition;
-import org.camunda.bpm.model.bpmn.instance.StartEvent;
+import org.camunda.bpm.model.bpmn.instance.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +69,21 @@ public class BnclEventParser extends BnclElementParser {
         this.eventTypes.add(new EventElement("messagecatchevent", IntermediateCatchEvent.class, MessageEventDefinition.class));
         this.eventTypes.add(new EventElement("throwevent", IntermediateThrowEvent.class));
         this.eventTypes.add(new EventElement("messagethrowevent", IntermediateThrowEvent.class, MessageEventDefinition.class));
+        this.eventTypes.add(new EventElement("timerevent", IntermediateCatchEvent.class, TimerEventDefinition.class));
+        this.eventTypes.add(new EventElement("timerstartevent", StartEvent.class, TimerEventDefinition.class));
+        this.eventTypes.add(new EventElement("errorevent", IntermediateCatchEvent.class, ErrorEventDefinition.class));
+        this.eventTypes.add(new EventElement("errorstartevent", StartEvent.class, ErrorEventDefinition.class));
+        this.eventTypes.add(new EventElement("conditionalevent", IntermediateCatchEvent.class,
+                ConditionalEventDefinition.class));
+        this.eventTypes.add(new EventElement("conditionalstartevent", StartEvent.class, ConditionalEventDefinition
+                .class));
+        this.eventTypes.add(new EventElement("linkevent", IntermediateCatchEvent.class, LinkEventDefinition.class));
+        this.eventTypes.add(new EventElement("signalcatchevent", IntermediateCatchEvent.class, SignalEventDefinition
+                .class));
+        this.eventTypes.add(new EventElement("signalthrowevent", IntermediateThrowEvent.class, SignalEventDefinition
+                .class));
+        this.eventTypes.add(new EventElement("signalstartevent", StartEvent.class, SignalEventDefinition.class));
+        this.eventTypes.add(new EventElement("signalendevent", EndEvent.class, SignalEventDefinition.class));
     }
 
     private static class EventElement {
