@@ -7,3 +7,5 @@
 /build
 /captures
 out/
+test_process.bpmn
+test_process.xml
