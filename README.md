@@ -30,7 +30,19 @@ If it was successful, a .xml and .bpmn file is generated in same folder. Open on
  - [Signavio](http://www.signavio.com/)
  - [BPMN.io](https://bpmn.io/)
  - [Yaoqiang Modeler](https://sourceforge.net/projects/bpmn/)
+ 
+**Note:** The Bncl-to-BPMN-converter only generates a valid xml-document in the [BPMN-2.0-Schema](http://activiti.org/userguide/index.html#whatIsBpmn).
+Not all editors supports a bpmn-file without rendering information (e.g.
 
+```xml
+<bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+```
 ## Development
 
 Bncl is a Gradle-Project!
