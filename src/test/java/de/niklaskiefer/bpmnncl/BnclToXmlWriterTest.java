@@ -38,7 +38,7 @@ public class BnclToXmlWriterTest {
     @Test
     public void testCreateBPMNFile() {
         try {
-            String xml = bnclToXmlWriter.createBPMNFile(testBncl);
+            String xml = bnclToXmlWriter.convertBnclToXML(testBncl);
             assertNotNull(xml); // todo: test xml components
         } catch (Exception e) {
             assertEquals(1, 2); //test failed
@@ -81,7 +81,7 @@ public class BnclToXmlWriterTest {
         String bncl = generateTestBnclWithEverything();
         assertNotNull(bncl);
         try {
-            String xml = bnclToXmlWriter.createBPMNFile(bncl);
+            String xml = bnclToXmlWriter.convertBnclToXML(bncl);
             assertNotNull(xml);
 
             xml = xml.replace("\r", "").replace("\n", "");
