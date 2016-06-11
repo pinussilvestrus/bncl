@@ -14,7 +14,8 @@ import java.util.logging.Level;
  */
 public class BnclParser extends AbstractBnclParser {
 
-    private static final String BEGINNING_GROUP = "lets create a process";
+    public static final String BEGINNING_GROUP = "lets create a process";
+    public static final String ELEMENT_BEGINNING = "with";
 
     private static final String PARSING_FAILS_MESSAGE = "Parsing bncl failed";
 
@@ -85,7 +86,7 @@ public class BnclParser extends AbstractBnclParser {
     }
 
     private void buildElements(String bncl) throws Exception {
-        String[] elements = bncl.toLowerCase().split("with");
+        String[] elements = bncl.toLowerCase().split(ELEMENT_BEGINNING);
 
         for (String element : elements) {
             eventParser.parseEvent(element);
