@@ -7,6 +7,7 @@ Software by [Niklas Kiefer](https://www.niklaskiefer.de/) ([andserve](https://an
 **Table of Contents**
 
 - [Introduction](#introduction)
+- [Demo] (#demo)
 - [Development](#development)
 - [BNCL-structure](#bncl-structure)
 
@@ -43,6 +44,11 @@ Not all editors supports a bpmn-file without rendering information (e.g.
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 ```
+
+## Demo
+
+There is also a web demo available: https://bncl.herokuapp.com ! Please feel free to try it out!
+
 ## Development
 
 Bncl is a Gradle-Project!

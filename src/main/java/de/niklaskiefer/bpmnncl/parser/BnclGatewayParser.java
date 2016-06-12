@@ -13,7 +13,7 @@ import java.util.Map;
 public class BnclGatewayParser extends BnclElementParser {
 
     // types
-    private static final String PARALLEL_GATEWAY = "parallelgateway";
+    public static final String PARALLEL_GATEWAY = "parallelgateway";
 
     public BnclGatewayParser(BPMNModelBuilder builder) {
         super(builder);

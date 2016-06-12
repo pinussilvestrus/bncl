@@ -11,11 +11,11 @@ import java.util.List;
  */
 public class BnclSequenceFlowParser extends AbstractBnclParser {
 
-    private static final String SEQUENCE_FLOW_KEYWORD = "sequenceflow";
+    public static final String SEQUENCE_FLOW_KEYWORD = "sequenceflow";
 
     // attributes
-    private static final String COMES_FROM = "comesfrom";
-    private static final String GOES_TO = "goesto";
+    public static final String COMES_FROM = "comesfrom";
+    public static final String GOES_TO = "goesto";
 
     private BPMNModelBuilder builder;
 

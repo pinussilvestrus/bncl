@@ -26,6 +26,7 @@ public class BnclElementParser extends AbstractBnclParser {
     }
 
     public BnclElementParser() {
+        initAttributeTypes();
     }
 
     protected Map<String, String> parseAttributes(List<String> components) throws Exception {
@@ -78,7 +79,11 @@ public class BnclElementParser extends AbstractBnclParser {
         attributeTypes.add(new AttributeElement("name", "called"));
     }
 
-    private static class AttributeElement {
+    public List<AttributeElement> getAttributeTypes() {
+        return attributeTypes;
+    }
+
+    public static class AttributeElement {
         private String id;
         private String bncl;
 
