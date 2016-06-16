@@ -21,6 +21,9 @@ To execute the CLI and convert a bncl statement to bpmn, download the current [r
 $ java -jar bncl-[versionNr.].jar
 ```
 
+
+For more information, see the [wiki](https://github.com/pinussilvestrus/bncl/wiki)
+
 **example bncl-statement:**
 
 > lets create a process with startevent signed startEvent1 called message incoming with usertask signed usertask1 called do something with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1
