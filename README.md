@@ -22,7 +22,7 @@ $ java -jar bncl-[versionNr.].jar
 ```
 
 
-For more information, see the [wiki](https://github.com/pinussilvestrus/bncl/wiki)
+### For more information, see the [wiki](https://github.com/pinussilvestrus/bncl/wiki)!
 
 **example bncl-statement:**
 
@@ -34,7 +34,7 @@ If it was successful, a .xml and .bpmn file is generated in same folder. Open on
  - [Signavio](http://www.signavio.com/)
  - [BPMN.io](https://bpmn.io/)
  - [Yaoqiang Modeler](https://sourceforge.net/projects/bpmn/)
- 
+
 **Note:** The Bncl-to-BPMN-converter only generates a valid xml-document in the [BPMN-2.0-Schema](http://activiti.org/userguide/index.html#whatIsBpmn).
 Not all editors supports a bpmn-file without rendering information (e.g.
 
