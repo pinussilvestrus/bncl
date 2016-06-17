@@ -13,7 +13,7 @@ public class MainApplication {
                     "errorevent signed event1 called 3 Stunden vergangen with " +
                     "scripttask signed usertask1 called dosomething with " +
                     "usertask signed usertask2 with " +
-                    "parallelgateway signed gateway1 with " +
+                    "inclusivegateway signed gateway1 with " +
                     "parallelgateway signed gateway2 with " +
                     "sequenceflow comesfrom startevent1 goesto event1 with " +
                     "sequenceflow comesfrom event1 goesto gateway1 with " +
