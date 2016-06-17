@@ -24,6 +24,10 @@ public class BnclGatewayParser extends BnclElementParser {
         initGatewayTypes();
     }
 
+    public BnclGatewayParser() {
+        initGatewayTypes();
+    }
+
     public Gateway parseGateway(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
@@ -54,7 +58,7 @@ public class BnclGatewayParser extends BnclElementParser {
         return gatewayTypes;
     }
 
-    private static class GatewayType {
+    public static class GatewayType {
         private String keyword;
         private Class type;
 
