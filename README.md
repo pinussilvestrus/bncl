@@ -21,6 +21,9 @@ To execute the CLI and convert a bncl statement to bpmn, download the current [r
 $ java -jar bncl-[versionNr.].jar
 ```
 
+
+### For more information, see the [wiki](https://github.com/pinussilvestrus/bncl/wiki)!
+
 **example bncl-statement:**
 
 > lets create a process with startevent signed startEvent1 called message incoming with usertask signed usertask1 called do something with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1
@@ -31,7 +34,7 @@ If it was successful, a .xml and .bpmn file is generated in same folder. Open on
  - [Signavio](http://www.signavio.com/)
  - [BPMN.io](https://bpmn.io/)
  - [Yaoqiang Modeler](https://sourceforge.net/projects/bpmn/)
- 
+
 **Note:** The Bncl-to-BPMN-converter only generates a valid xml-document in the [BPMN-2.0-Schema](http://activiti.org/userguide/index.html#whatIsBpmn).
 Not all editors supports a bpmn-file without rendering information (e.g.
 
