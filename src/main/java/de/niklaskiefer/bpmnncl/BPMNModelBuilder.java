@@ -5,7 +5,9 @@ import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 import org.camunda.bpm.model.bpmn.instance.BpmnModelElementInstance;
 import org.camunda.bpm.model.bpmn.instance.Definitions;
 import org.camunda.bpm.model.bpmn.instance.EventDefinition;
+import org.camunda.bpm.model.bpmn.instance.ExclusiveGateway;
 import org.camunda.bpm.model.bpmn.instance.FlowNode;
+import org.camunda.bpm.model.bpmn.instance.Gateway;
 import org.camunda.bpm.model.bpmn.instance.ParallelGateway;
 import org.camunda.bpm.model.bpmn.instance.Process;
 import org.camunda.bpm.model.bpmn.instance.SequenceFlow;
@@ -73,8 +75,8 @@ public class BPMNModelBuilder {
         return null;
     }
 
-    public ParallelGateway createParallelGateway(Process process, Map<String, String> attributes) {
-        return createElement(process, ParallelGateway.class, attributes);
+    public Gateway createGateway(Process process, Map<String, String> attributes, Class type) {
+        return (Gateway) createElement(process, type, attributes);
     }
 
     public SequenceFlow createSequenceFlow(Process process, FlowNode from, FlowNode to) {
