@@ -35,6 +35,11 @@ public class BnclToXmlWriter {
         logger.info("Successfully save bpmn file to " + fileName);
     }
 
+    public void createBPMNFileFromFile(String file) throws Exception {
+        String bncl = getStringFromFileReaderAndClose(file);
+        createBPMNFile(bncl);
+    }
+
     public String convertBnclToXML(String bncl) throws Exception {
         BpmnModelInstance bpmnModelInstance = createBPMModelInstance(bncl);
         String xmlString = Bpmn.convertToString(bpmnModelInstance);
