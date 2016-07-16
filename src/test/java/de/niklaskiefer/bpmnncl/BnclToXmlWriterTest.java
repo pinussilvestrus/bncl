@@ -12,6 +12,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -93,6 +95,18 @@ public class BnclToXmlWriterTest {
             Document doc = builder.parse(new ByteArrayInputStream(xml.getBytes()));
             assertNotNull(doc);
 
+        } catch (Exception e) {
+            assertEquals(1, 2); //test failed
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testConvertBnclFileToXML() {
+        String fileName = "test.bncl";
+        try {
+            String xml = bnclToXmlWriter.convertBnclFileToXML(fileName);
+            assertNotNull(xml);
         } catch (Exception e) {
             assertEquals(1, 2); //test failed
             e.printStackTrace();

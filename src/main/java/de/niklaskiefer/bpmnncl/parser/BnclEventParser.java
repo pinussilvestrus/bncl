@@ -2,7 +2,19 @@ package de.niklaskiefer.bpmnncl.parser;
 
 import de.niklaskiefer.bpmnncl.BPMNModelBuilder;
 
-import org.camunda.bpm.model.bpmn.instance.*;
+import org.camunda.bpm.model.bpmn.instance.BpmnModelElementInstance;
+import org.camunda.bpm.model.bpmn.instance.CancelEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.CompensateEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.EndEvent;
+import org.camunda.bpm.model.bpmn.instance.ErrorEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.EscalationEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.IntermediateCatchEvent;
+import org.camunda.bpm.model.bpmn.instance.IntermediateThrowEvent;
+import org.camunda.bpm.model.bpmn.instance.MessageEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.SignalEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.StartEvent;
+import org.camunda.bpm.model.bpmn.instance.TerminateEventDefinition;
+import org.camunda.bpm.model.bpmn.instance.TimerEventDefinition;
 
 import java.util.ArrayList;
 import java.util.List;
