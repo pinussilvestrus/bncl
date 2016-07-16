@@ -5,7 +5,9 @@ import de.niklaskiefer.bpmnncl.parser.BnclParser;
 import org.camunda.bpm.model.bpmn.Bpmn;
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,10 +43,32 @@ public class BnclToXmlWriter {
         return xmlString;
     }
 
+    public String convertBnclFileToXML(String fileName) throws Exception {
+        String bncl = getStringFromFileReaderAndClose(fileName);
+        return convertBnclToXML(bncl);
+    }
+
     private BpmnModelInstance createBPMModelInstance(String bncl) throws Exception {
         BnclParser parser = new BnclParser();
         BpmnModelInstance modelInstance;
         modelInstance = parser.parseBncl(bncl);
         return modelInstance;
+    }
+
+    private String getStringFromFileReaderAndClose(String fileName) throws Exception {
+        StringBuilder result = new StringBuilder();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(fileName));
+            while (reader.ready()) {
+                result.append(reader.readLine());
+            }
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+
+        return result.toString();
     }
 }
