@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class MainApplication {
 
-    private static String testBncl =
+    public static String testBncl =
             "lets create a process with " +
-                    "signalstartevent signed startEvent1 called message incoming with " +
-                    "errorevent signed event1 called 3 Stunden vergangen with " +
-                    "scripttask signed usertask1 called dosomething with " +
+                    "a signalstartevent signed startEvent1 called message incoming with " +
+                    "an errorevent signed event1 called 3 Stunden vergangen with " +
+                    "a scripttask signed usertask1 called dosomething with " +
                     "usertask signed usertask2 with " +
                     "inclusivegateway signed gateway1 with " +
                     "parallelgateway signed gateway2 with " +
