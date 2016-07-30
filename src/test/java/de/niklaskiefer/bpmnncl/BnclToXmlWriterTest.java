@@ -28,8 +28,7 @@ public class BnclToXmlWriterTest {
     private BnclEventParser eventParser;
     private BnclTaskParser taskParser;
 
-    private final String testBncl = "lets create a process with startevent signed startEvent1 called startevent1 with usertask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with exclusivegateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1";
-
+    private final String testBncl = MainApplication.testBncl;
     @Before
     public void setUp() {
         bnclToXmlWriter = new BnclToXmlWriter();
