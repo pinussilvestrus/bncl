@@ -16,6 +16,8 @@ public class BnclParser extends AbstractBnclParser {
 
     public static final String BEGINNING_GROUP = "lets create a process";
     public static final String ELEMENT_BEGINNING = "with";
+    public static final String INDEFINITE_ARTICLE_A = "a";
+    public static final String INDEFINITE_ARTICLE_AN = "an";
 
     private static final String PARSING_FAILS_MESSAGE = "Parsing bncl failed";
 
@@ -86,7 +88,7 @@ public class BnclParser extends AbstractBnclParser {
     }
 
     private void buildElements(String bncl) throws Exception {
-        String[] elements = bncl.toLowerCase().split(ELEMENT_BEGINNING);
+        List<String> elements = splitBnclToElements(bncl);
 
         for (String element : elements) {
             eventParser.parseEvent(element);
@@ -94,6 +96,31 @@ public class BnclParser extends AbstractBnclParser {
             sequenceFlowParser.parseSequenceFlow(element);
             gatewayParser.parseGateway(element);
         }
+    }
+
+    private List<String> splitBnclToElements(String bncl) throws Exception {
+        String[] splittedElements = bncl.toLowerCase().split(ELEMENT_BEGINNING);
+        List<String> elements = new ArrayList<>();
+
+        for(int i = 0; i < splittedElements.length; i++) {
+            String element = splittedElements[i];
+
+            // remove space on first position if necessary
+            if (element.startsWith(" ")) {
+                element = element.substring(1);
+            }
+
+            // check if 'a' or 'an' comes ofter 'with' and remove it
+            if (element.startsWith(INDEFINITE_ARTICLE_A)) {
+                element = element.substring(INDEFINITE_ARTICLE_A.length());
+            } else if (element.startsWith(INDEFINITE_ARTICLE_AN)) {
+                element = element.substring(INDEFINITE_ARTICLE_AN.length());
+            }
+            elements.add(element);
+        }
+
+        return elements;
+
     }
 
 }

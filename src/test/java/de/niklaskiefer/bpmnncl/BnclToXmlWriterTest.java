@@ -12,6 +12,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -26,8 +28,7 @@ public class BnclToXmlWriterTest {
     private BnclEventParser eventParser;
     private BnclTaskParser taskParser;
 
-    private final String testBncl = "lets create a process with startevent signed startEvent1 called startevent1 with usertask signed usertask1 called dosomething with usertask signed usertask2 with parallelgateway signed gateway1 with exclusivegateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1";
-
+    private final String testBncl = MainApplication.testBncl;
     @Before
     public void setUp() {
         bnclToXmlWriter = new BnclToXmlWriter();
@@ -93,6 +94,18 @@ public class BnclToXmlWriterTest {
             Document doc = builder.parse(new ByteArrayInputStream(xml.getBytes()));
             assertNotNull(doc);
 
+        } catch (Exception e) {
+            assertEquals(1, 2); //test failed
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testConvertBnclFileToXML() {
+        String fileName = "test.bncl";
+        try {
+            String xml = bnclToXmlWriter.convertBnclFileToXML(fileName);
+            assertNotNull(xml);
         } catch (Exception e) {
             assertEquals(1, 2); //test failed
             e.printStackTrace();
