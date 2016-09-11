@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar web/build/libs/bnclDemo-0.1.0.jar

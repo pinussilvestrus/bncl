@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="bnclTextarea(bncl)">
+    <form name="bnclInput" class="input-field" th:action="@{/convertBncl}" method="post">
+        <p class="card-title">Input a Bncl statement</p>
+        <textarea id="bncl" name="bncl" class="materialize-textarea" required="true" th:inline="text" style="font-family: 'Abel', sans-serif;">[[${bncl != null ? bncl : ''}]]</textarea>
+        <button class="waves-effect waves-dark btn blue-grey lighten-5 black-text" id="convertBtn" type="submit">
+            Convert
+        </button>
+    </form>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var bnclWords = [[${bnclWords}]];
+        $('#bncl').textcomplete([
+             {
+                 id: 'bncl',
+                 words: bnclWords,
+                 match: /\b(\w{2,})$/,
+                 search: function (term, callback) {
+                     callback($.map(this.words, function (word) {
+                         return word.indexOf(term) === 0 ? word : null;
+                     }));
+                 },
+                 index: 1,
+                 replace: function (word) {
+                     return word + ' ';
+                 }
+             }
+         ], {
+             onKeydown: function (e, commands) {
+                 if (e.ctrlKey && e.keyCode === 74) { // CTRL-J
+                     return commands.KEY_ENTER;
+                 }
+             }
+         });
+        /*]]>*/
+    </script>
+</div>
+</body>
+</html>
