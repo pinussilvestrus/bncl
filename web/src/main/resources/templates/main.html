@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="fragments/head :: head"></div>
+    <body>
+        <!-- Load scripts -->
+        <div th:replace="fragments/scripts"></div>
+
+        <div th:include="fragments/notification"></div>
+
+        <div class="main">
+            <div class="header">
+                <div class="headerInner">
+                    <h2>
+                        <b>Bncl</b> <span class="normalText">- BPMN natural creation language</span>
+                    </h2>
+                    <img class="headerDiagram" src="img/header_diagram.png"></img>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="bnclInput">
+                        <div class="row">
+                            <div class="col s12 m6 l6">
+                                <div class="card blue-grey lighten-3">
+                                    <div class="card-content dark-text">
+                                        <div th:replace="fragments/bnclTextarea :: bnclTextarea(${bncl})"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l6">
+                                <div class="card blue-grey lighten-4" style="opacity: 0.8">
+                                    <div class="card-content dark-text">
+                                        <p class="card-title">Example</p>
+                                        <textarea
+                                                class="readonly materialize-textarea"
+                                                readonly="true"
+                                                id="exampleView"
+                                                onClick="SelectAll('exampleView');"
+                                                style="background-color: #cfd8dc">lets create a process with startevent signed startEvent1 called message incoming with usertask signed usertask1 called do something with usertask signed usertask2 with parallelgateway signed gateway1 with parallelgateway signed gateway2 with sequenceflow comesfrom startevent1 goesto gateway1 with sequenceflow comesfrom gateway1 goesto usertask1 with sequenceflow comesfrom gateway1 goesto usertask2 with sequenceflow comesfrom usertask1 goesto gateway2 with sequenceflow comesfrom usertask2 goesto gateway2 with endevent signed endevent1 called terminated with sequenceflow comesfrom gateway2 goesto endevent1</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xmlViewer">
+                        <div th:replace="fragments/bpmnViewer :: bpmnViewer(${xml})"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <a href="https://github.com/pinussilvestrus/bncl/wiki" target="_blank">
+                    <h4 class="footerVersion">How to | </h4>
+                </a>
+                <a href="https://github.com/pinussilvestrus/bncl" target="_blank">
+                    <img src="img/github.png" alt=""></img>
+                </a>
+                <a href="https://github.com/pinussilvestrus/bncl/releases" target="_blank">
+                    <h4 class="footerVersion"> | v0.1.5</h4>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
