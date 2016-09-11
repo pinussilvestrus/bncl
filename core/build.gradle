@@ -1,0 +1,49 @@
+group 'bncl'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'application'
+
+mainClassName = 'de.niklaskiefer.bnclCore.MainApplication'
+
+dependencies {
+    compile group: 'org.camunda.bpm.model', name: 'camunda-bpmn-model', version: '7.5.0-alpha4'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+}
+
+run {
+    standardInput = System.in
+}
+
+jar {
+    baseName = 'bncl'
+    version =  '0.1.5'
+    // put dependencies to jar
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+        attributes 'Main-Class': 'de.niklaskiefer.bnclCore.MainApplication'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+check.dependsOn jacocoTestReport

@@ -6,6 +6,7 @@
 .DS_Store
 /build
 /captures
-out/
+core/out/
+*/build
 test_process.bpmn
 test_process.xml
