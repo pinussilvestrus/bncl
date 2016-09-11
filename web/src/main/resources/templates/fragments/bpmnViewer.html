@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="bpmnViewer(bpmn)">
+    <h4>BPMN 2.0 XML output: </h4>
+    <button
+            class="waves-effect waves-dark btn blue-grey lighten-5 black-text"
+            id="downloadBpmn"
+            onclick="createAndOpenFile()"
+            download="process.bpmn">
+        Download as BPMN-file
+    </button>
+    <pre>
+        <code id="xml" class="xml">...
+
+        </code>
+    </pre>
+
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        var xml = [[${bpmn}]];
+
+        if (xml != "") {
+            $('html, body').animate({
+                scrollTop: $("#xml").offset().top-55
+            }, 1200);
+        }
+
+        var xml_formatted = formatXML(xml);
+        xml_escaped = xml_formatted.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
+
+        var mydiv = document.getElementById('xml');
+
+        mydiv.innerHTML = xml_escaped;
+    });
+
+    function createAndOpenFile(){
+        var bpmn = [[${bpmn}]];
+        download(bpmn, "process.bpmn", "text/xml");
+    }
+    /*]]>*/
+  </script>
+</div>
+</body>
+</html>
