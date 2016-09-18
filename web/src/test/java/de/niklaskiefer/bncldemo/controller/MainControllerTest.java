@@ -1,6 +1,7 @@
 package de.niklaskiefer.bncldemo.controller;
 
 import de.niklaskiefer.bncldemo.MainApplication;
+import de.niklaskiefer.bncldemo.MainController;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,5 +37,12 @@ public class MainControllerTest {
     public void testOpenThymeleaf() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testConvertBncl() throws Exception {
+        String bncl = de.niklaskiefer.bnclCore.MainApplication.testBncl;
+        this.mockMvc.perform(post("/convertBncl?bncl=" + bncl)).
+                andExpect(status().isOk());
     }
 }
