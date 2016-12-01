@@ -50,7 +50,7 @@ Not all editors supports a bpmn-file without rendering information (e.g.
 
 ## Demo
 
-There is also a web demo available: http://bncl.niklaskiefer.de ! Please feel free to try it out!
+There is also a web demo available: http://bncl.de ! Please feel free to try it out!
 
 ## Development
 
