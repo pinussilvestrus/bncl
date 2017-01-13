@@ -61,5 +61,20 @@
         };
     </script>
 
+    <script>
+        function autoLayoutFromApi(xmlString) {
+            var http = new XMLHttpRequest();
+            var url = "http://localhost:8082/autoLayout";
+            var data = new FormData();
+            data.append('bpmn', xmlString);
+            http.open('POST', url, true);
+            console.log(data);
+            http.onload = function() {
+                console.log(this.responseText);
+            };
+            http.send(data);
+        }
+    </script>
+
 </body>
 </html>
