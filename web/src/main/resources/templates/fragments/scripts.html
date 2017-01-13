@@ -36,27 +36,28 @@
 
     <script>
 
-        function findAllMatches(r, string) {
-            var match, indexes= [];
-            while (match = r.exec(string)) {
-                indexes.push(match.index);
-            }
-            return indexes
-        }
-
         String.prototype.replaceAt=function(index, character) {
             return this.substr(0, index) + character + this.substr(index+1);
         };
 
+        function findAllMatches(r, string, replacement) {
+            var match;
+            while (match = r.exec(string)) {
+                string = string.replaceAt(match.index, replacement);
+            }
+            return string;
+        }
+
         // replaces just the first char of the found string
+        String.prototype.replaceAllJustFirst = function(search, replacement) {
+            var target = this;
+            var found = findAllMatches(RegExp(search, 'g'), target, replacement);
+            return found;
+        };
+
         String.prototype.replaceAll = function(search, replacement) {
             var target = this;
-            var found = findAllMatches(RegExp(search, 'g'), target);
-            found.forEach(function(f) {
-               console.log(target[f]);
-            });
-
-            return target
+            return target.replace(new RegExp(search, 'g'), replacement);
         };
     </script>
 
