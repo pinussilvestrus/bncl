@@ -17,37 +17,50 @@
     </pre>
 
     <script th:inline="javascript">
-    /*<![CDATA[*/
-    $(document).ready(function() {
-        var xml = [[${bpmn}]];
+        /*<![CDATA[*/
+        $(document).ready(function () {
+            var xml = [[${bpmn}]];
 
-        if (xml != "") {
-            $('html, body').animate({
-                scrollTop: $("#xml").offset().top-55
-            }, 1200);
+            if (xml != "") {
+                $('html, body').animate({
+                                            scrollTop: $("#xml").offset().top - 55
+                                        }, 1200);
+            }
+
+            xml = addPrefix(xml);
+
+            var xml_formatted = formatXML(xml);
+            xml_escaped =
+                    xml_formatted.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                            .replace(/ /g, '&nbsp;').replace(/\n/g, '<br />');
+
+            var mydiv = document.getElementById('xml');
+
+            mydiv.innerHTML = xml_escaped;
+        });
+
+        function addPrefix(xml) {
+            xml = xml.replaceAllJustFirst("<+([a-z])", "<bpmn:");
+            xml = xml.replaceAll("</", "</bpmn:");
+
+            // add additional xml-namespaces
+            var additionalNS = ' xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"'
+                               + ' xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ';
+            var xmlDefinitions = "bpmn:definitions";
+
+            xml = xml.substring(0, xml.indexOf(xmlDefinitions) + xmlDefinitions.length)
+                  + additionalNS
+                  + xml.substring(xml.indexOf(xmlDefinitions) + xmlDefinitions.length + 1);
+
+            return xml;
         }
 
-        xml = addPrefix(xml);
-
-        var xml_formatted = formatXML(xml);
-        xml_escaped = xml_formatted.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
-
-        var mydiv = document.getElementById('xml');
-
-        mydiv.innerHTML = xml_escaped;
-    });
-
-    function addPrefix(xml) {
-        xml = xml.replaceAllJustFirst("<+([a-z])","<bpmn:");
-        return xml.replaceAll("</","</bpmn:")
-    }
-
-    function createAndOpenFile(){
-        var bpmn = [[${bpmn}]];
-        download(bpmn, "process.bpmn", "text/xml");
-    }
-    /*]]>*/
-  </script>
+        function createAndOpenFile() {
+            var bpmn = [[${bpmn}]];
+            download(addPrefix(bpmn), "process.bpmn", "text/xml");
+        }
+        /*]]>*/
+    </script>
 </div>
 </body>
 </html>
