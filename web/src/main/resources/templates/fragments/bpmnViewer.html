@@ -9,13 +9,6 @@
                 id="downloadBpmn"
                 onclick="createAndOpenFile()"
                 download="process.bpmn">
-            Download as BPMN-file
-        </button>
-        <button
-                class="waves-effect waves-dark btn blue-grey lighten-5 black-text"
-                id="downloadWithUI"
-                onclick="createAndOpenFileWithLayout()"
-                download="process.bpmn">
             Download as BPMN-file with Layout
         </button>
     </div>
@@ -37,7 +30,6 @@
             }
 
             xml = addPrefix(xml);
-
             var xml_formatted = formatXML(xml);
             xml_escaped =
                     xml_formatted.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -46,6 +38,7 @@
             var mydiv = document.getElementById('xml');
 
             mydiv.innerHTML = xml_escaped;
+
         });
 
         function addPrefix(xml) {
@@ -67,14 +60,10 @@
         function createAndOpenFile() {
             var bpmn = [[${bpmn}]];
             bpmn = addPrefix(bpmn);
-            download(bpmn, "process.bpmn", "text/xml");
-        }
-
-        function createAndOpenFileWithLayout() {
-            var bpmn = [[${bpmn}]];
-            bpmn = addPrefix(bpmn);
-            autoLayoutFromApi(bpmn);
-            //download(bpmn, "process.bpmn", "text/xml");
+            autoLayoutFromApi(bpmn).then(function(res) {
+                console.log(res);
+                download(res, "process.bpmn", "text/xml");
+            });
         }
 
         /*]]>*/
