@@ -27,7 +27,7 @@
             }, 1200);
         }
 
-        addPrefix(xml);
+        xml = addPrefix(xml);
 
         var xml_formatted = formatXML(xml);
         xml_escaped = xml_formatted.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
@@ -38,7 +38,8 @@
     });
 
     function addPrefix(xml) {
-        console.log(xml.replaceAll("<+([a-z])","<bpmn:"));
+        xml = xml.replaceAllJustFirst("<+([a-z])","<bpmn:");
+        return xml.replaceAll("</","</bpmn:")
     }
 
     function createAndOpenFile(){
