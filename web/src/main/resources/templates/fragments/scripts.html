@@ -34,5 +34,31 @@
 
     </script>
 
+    <script>
+
+        function findAllMatches(r, string) {
+            var match, indexes= [];
+            while (match = r.exec(string)) {
+                indexes.push(match.index);
+            }
+            return indexes
+        }
+
+        String.prototype.replaceAt=function(index, character) {
+            return this.substr(0, index) + character + this.substr(index+1);
+        };
+
+        // replaces just the first char of the found string
+        String.prototype.replaceAll = function(search, replacement) {
+            var target = this;
+            var found = findAllMatches(RegExp(search, 'g'), target);
+            found.forEach(function(f) {
+               console.log(target[f]);
+            });
+
+            return target
+        };
+    </script>
+
 </body>
 </html>
