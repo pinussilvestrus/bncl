@@ -63,14 +63,19 @@
 
     <script>
         function autoLayoutFromApi(xmlString) {
-            var url = "http://localhost:8082/autoLayout";
+            var url = "http://autolayout.niklaskiefer.de/autoLayout";
             var data = {
                 bpmn: xmlString
             };
-            return $.post(url, data)
-                .done(function(res) {
-                return res;
-             });
+
+            return $.ajax({
+                type: 'POST',
+                url: url,
+                timeout: 15000,
+                data: data,
+                success: function(data) {return data},
+                error: function(XMLHttpRequest, textStatus, errorThrown) {return textStatus}
+            });
         }
     </script>
 
