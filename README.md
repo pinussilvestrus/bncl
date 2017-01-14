@@ -50,7 +50,12 @@ Not all editors supports a bpmn-file without rendering information (e.g.
 
 ## Demo
 
-There is also a web demo available: http://bncl.de ! Please feel free to try it out!
+There is also a web demo available: http://bncl.de. On the web demo, the bncl-parser also autolayouts the created bpmn-string so it can used in several BPMN modeler. Please feel free to try it out!
+
+Or try it out locally:
+```sh
+$ sh demo_server_startup.sh
+```
 
 ## Development
 
