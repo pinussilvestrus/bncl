@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<div th:fragment="bpmnViewer(bpmn)">
+<div th:fragment="bpmnViewer(bpmn)" th:if="${bpmn != ''}">
     <h4>BPMN 2.0 XML output: </h4>
     <div class="row">
         <button
@@ -27,6 +27,8 @@
                 $('html, body').animate({
                                             scrollTop: $("#xml").offset().top - 55
                                         }, 1200);
+            } else {
+                return;
             }
 
             xml = addPrefix(xml);
@@ -60,9 +62,10 @@
         function createAndOpenFile() {
             var bpmn = [[${bpmn}]];
             bpmn = addPrefix(bpmn);
-            autoLayoutFromApi(bpmn).then(function(res) {
-                console.log(res);
+            autoLayoutFromApi(bpmn).success(function(res, err) {
                 download(res, "process.bpmn", "text/xml");
+            }).fail(function(err) {
+                download(bpmn, "process.bpmn", "text/xml");
             });
         }
 
