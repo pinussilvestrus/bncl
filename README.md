@@ -90,4 +90,4 @@ is a keyword that signs the beginning of a process element
 
 signs a sequence workflow between process elements. **comesfrom** with given id signs the fromElement, **goesto** signes the toElement.
 
-See the wiki for all element types!
+See the [wiki](https://github.com/pinussilvestrus/bncl/wiki) for all element types!
