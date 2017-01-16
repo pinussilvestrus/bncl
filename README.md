@@ -1,6 +1,8 @@
 ![alt text](logo.png)
 
-[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/master.svg)](https://codecov.io/github/pinussilvestrus/bncl?branch=master) [![Version](https://img.shields.io/github/release/pinussilvestrus/bncl.svg)](https://github.com/pinussilvestrus/bncl/releases)
+[![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/master.svg)](https://travis-ci.org/pinussilvestrus/bncl)
+[![Code Quality](https://img.shields.io/codeclimate/github/pinussilvestrus/bncl.svg)](https://travis-ci.org/pinussilvestrus/bncl)
+[![Version](https://img.shields.io/github/release/pinussilvestrus/bncl.svg)](https://github.com/pinussilvestrus/bncl/releases)
 
 Software by [Niklas Kiefer](https://www.niklaskiefer.de/) ([andserve](https://andserve.net/)), [MIT License](https://github.com/pinussilvestrus/bncl/blob/develop/LICENSE)
 
