@@ -23,13 +23,15 @@
         $(document).ready(function () {
             var xml = [[${bpmn}]];
 
-            if (xml != "") {
-                $('html, body').animate({
-                                            scrollTop: $("#xml").offset().top - 55
-                                        }, 1200);
-            } else {
+            if (xml == "" || xml.indexOf("Error: invalid") >= 0) {
+                var mydiv = document.getElementById('xml');
+                mydiv.innerHTML = xml;
                 return;
             }
+
+            $('html, body').animate({
+                                        scrollTop: $("#xml").offset().top - 55
+                                    }, 1200);
 
             xml = addPrefix(xml);
             var xml_formatted = formatXML(xml);
