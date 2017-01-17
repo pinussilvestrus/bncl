@@ -64,15 +64,12 @@
     <script>
         function autoLayoutFromApi(xmlString) {
             var url = "https://autolayout.niklaskiefer.de/autoLayout";
-            var data = {
-                bpmn: xmlString
-            };
 
             return $.ajax({
                 type: 'POST',
                 url: url,
                 timeout: 15000,
-                data: data,
+                data: xmlString,
                 success: function(data) {return data},
                 error: function(XMLHttpRequest, textStatus, errorThrown) {return textStatus}
             });
