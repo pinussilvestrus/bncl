@@ -9,7 +9,8 @@ Software by [Niklas Kiefer](https://www.niklaskiefer.de/) ([andserve](https://an
 **Table of Contents**
 
 - [Introduction](#introduction)
-- [Demo] (#demo)
+- [Auto-Layout](#autolayout)
+- [Demo](#demo)
 - [Development](#development)
 - [BNCL-structure](#bncl-structure)
 
@@ -49,6 +50,10 @@ Not all editors supports a bpmn-file without rendering information (e.g.
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 ```
+
+## Auto-layout
+
+There is also a possibility to add these di-elements to the generated bpmn. Either you use the [demo-webpage](#demo) or the [bncl-autolayout repository](https://github.com/pinussilvestrus/bncl-autolayout).
 
 ## Demo
 
