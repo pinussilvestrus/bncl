@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:if="${notificationMessage}" class="notification"
-   th:classappend="${err}? 'notification--error' : 'notification--success'">
 
-  <span th:text="${notificationMessage}"></span>
+<div th:if="${notificationMessage}" class="notification"
+     th:classappend="${err}? 'notification--error' : 'notification--success'">
+  <div class="notification-icon">
+    <!--<i class="fa fa-exclamation"></i>-->
+  </div>
+  <div class="notification-body">
+    <p th:text="${notificationMessage}"></p>
+  </div>
+  <button class="notification-close">X</button>
 </div>
+
+<script>
+  function closeMessage(el) {
+    el.addClass('is-hidden');
+  }
+
+  $('.notification-close').on('click', function(e) {
+    closeMessage($(this).closest('.notification'));
+  });
+</script>
 </html>

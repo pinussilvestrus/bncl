@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 public class MainController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
+    private static final String BNCL_PARSER_ERROR = "Error in parsing bncl statement!";
+    private static final String BNCL_PARSER_SUCCESS = "Successfully parsing bncl statement!";
 
     private static final String testBncl =
             "lets create a process with " +
@@ -57,18 +59,21 @@ public class MainController {
     @RequestMapping(value = "/convertBncl", method = RequestMethod.POST)
     public String convert(@RequestParam(value="bncl", required=true) String bncl, Model model) {
         model.addAttribute("bncl", bncl);
-        model.addAttribute("xml", convertBnclToXML(bncl));
+        try {
+            model.addAttribute("xml", convertBnclToXML(bncl));
+            model.addAttribute("notificationMessage", BNCL_PARSER_SUCCESS);
+        } catch (Exception e) {
+            LOGGER.info(BNCL_PARSER_ERROR);
+            model.addAttribute("err", true);
+            model.addAttribute("notificationMessage", BNCL_PARSER_ERROR);
+            model.addAttribute("xml", "");
+        }
         return "main";
     }
 
-    private String convertBnclToXML(String bncl) {
+    private String convertBnclToXML(String bncl) throws Exception {
         BnclToXmlWriter writer = new BnclToXmlWriter();
-        try {
-            return writer.convertBnclToXML(bncl);
-        } catch (Exception e) {
-            LOGGER.info("Error in parsing bncl Statement!");
-            return "Error: invalid bncl Statement!";
-        }
+        return writer.convertBnclToXML(bncl);
     }
 
     private List<String> getAllBnclWords() {
