@@ -12,11 +12,24 @@
             Download as BPMN-file with Layout
         </button>
     </div>
-    <pre>
-        <code id="xml" class="xml">...
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3 blue-grey lighten-5 black-text"><a class="active" href="#xmlTab">XML</a></li>
+                <li class="tab col s3 blue-grey lighten-5 black-text" onclick="renderBPMN()"><a href="#bpmnTab">Rendered BPMN</a></li>
+            </ul>
+        </div>
+        <div id="xmlTab" class="col s12">
+            <pre>
+                <code id="xml" class="xml">...
 
-        </code>
-    </pre>
+                </code>
+            </pre>
+        </div>
+        <div id="bpmnTab" class="col s12">
+            <div id="renderedBPMN"></div>
+        </div>
+    </div>
 
     <script th:inline="javascript">
         /*<![CDATA[*/
@@ -69,6 +82,31 @@
             }).fail(function(err) {
                 download(bpmn, "process.bpmn", "text/xml");
             });
+        }
+
+        function renderBPMN() {
+            removeRenderedBPMN();
+            var viewer = new BpmnJS({ container: '#renderedBPMN' });
+            var bpmn = [[${bpmn}]];
+            bpmn = addPrefix(bpmn);
+            autoLayoutFromApi(bpmn).success(function(res, err) {
+                viewer.importXML(res, function(err) {
+
+                    if (err) {
+                        console.log('error rendering', err);
+                    } else {
+                        var canvas = viewer.get('canvas');
+                        canvas.zoom('fit-viewport');
+                    }
+                });
+            }).fail(function(err) {
+                console.log('error rendering', err)
+            });
+        }
+
+        function removeRenderedBPMN() {
+            $('#renderedBPMN').remove();
+            $('#bpmnTab').append("<div id='renderedBPMN'></div>");
         }
 
         /*]]>*/

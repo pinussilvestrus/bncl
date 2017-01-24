@@ -10,6 +10,7 @@
     <script type="text/javascript" src="js/download.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript" src="js/tawkChat.js"></script>
+    <script type="text/javascript" src="bpmnjs/bpmn-viewer.min.js"></script>
 
     <script th:inline="javascript">
         function SelectAll(id) {
@@ -20,7 +21,12 @@
         // Show sideNav
         $('.button-collapse').sideNav('show');
         // Hide sideNav
-         $('.button-collapse').sideNav('hide');
+        $('.button-collapse').sideNav('hide');
+
+        //initialize materialize tabs
+        $(document).ready(function(){
+            $('ul.tabs').tabs();
+        });
     </script>
 
     <script>
