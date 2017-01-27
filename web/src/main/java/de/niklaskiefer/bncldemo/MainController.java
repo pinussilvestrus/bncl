@@ -1,4 +1,4 @@
-package de.niklaskiefer.bncldemo;
+package de.niklaskiefer.bnclDemo;
 
 import de.niklaskiefer.bnclCore.BnclToXmlWriter;
 import de.niklaskiefer.bnclCore.parser.BnclElementParser;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
