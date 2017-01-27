@@ -1,6 +1,6 @@
-package de.niklaskiefer.bncldemo;
+package de.niklaskiefer.bnclDemo;
 
-import de.niklaskiefer.bncldemo.config.ThymeleafConfig;
+import de.niklaskiefer.bnclDemo.config.ThymeleafConfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
