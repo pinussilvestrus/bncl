@@ -188,3 +188,7 @@ html {
     position: relative !important;
     margin: 15px;
 }
+
+#download-svg {
+    margin-bottom: 20px;
+}
