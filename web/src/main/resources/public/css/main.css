@@ -182,3 +182,9 @@ html {
     height: 500px;
     margin-bottom: 2%;
 }
+
+.badge-autolayout {
+    float: left !important;
+    position: relative !important;
+    margin: 15px;
+}
