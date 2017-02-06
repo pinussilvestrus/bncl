@@ -19,7 +19,7 @@ public class BnclParser extends AbstractBnclParser {
     public static final String INDEFINITE_ARTICLE_A = "a";
     public static final String INDEFINITE_ARTICLE_AN = "an";
 
-    private static final String PARSING_FAILS_MESSAGE = "Parsing bncl failed";
+    private static final String PARSING_FAILS_MESSAGE_BEGINNING_KEYWORD = "A valid bncl statement has to begin with \"lets create a process\"";
 
     private BPMNModelBuilder builder;
     private BpmnModelInstance modelInstance;
@@ -68,7 +68,7 @@ public class BnclParser extends AbstractBnclParser {
 
     public BpmnModelInstance parseBncl(String bnclString) throws Exception {
         if (bnclString.toLowerCase().indexOf(BEGINNING_GROUP) != 0) {
-            throw new Exception(PARSING_FAILS_MESSAGE);
+            throw new Exception(PARSING_FAILS_MESSAGE_BEGINNING_KEYWORD);
         }
 
         copy = bnclString;
