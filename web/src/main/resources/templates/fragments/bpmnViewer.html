@@ -15,8 +15,10 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3 blue-grey lighten-5 black-text"><a class="active" href="#xmlTab">XML</a></li>
-                <li class="tab col s3 blue-grey lighten-5 black-text" onclick="renderBPMN()"><a href="#bpmnTab">Rendered BPMN</a></li>
+                <li class="tab col s3 blue-grey lighten-5 black-text"><a class="active"
+                                                                         href="#xmlTab">XML</a></li>
+                <li class="tab col s3 blue-grey lighten-5 black-text" onclick="renderBPMN()"><a
+                        href="#bpmnTab">Rendered BPMN</a></li>
             </ul>
         </div>
         <div id="xmlTab" class="col s12">
@@ -27,13 +29,23 @@
             </pre>
         </div>
         <div id="bpmnTab" class="col s12">
-            <span class="badge-autolayout badge blue-grey lighten-5 black-text"><a href="https://github.com/pinussilvestrus/bncl-autolayout" target="_blank">Auto-Layouting by BNCL</a></span>
+            <span class="badge-autolayout badge grey lighten-2 black-text"><a
+                    href="https://github.com/pinussilvestrus/bncl-autolayout" target="_blank">Auto-Layouting
+                by BNCL</a></span>
             <div id="renderedBPMN"></div>
+            <button
+                    id="download-svg"
+                    value="download as SVG image"
+                    class="waves-effect waves-dark btn blue-grey lighten-1 black-text"
+                    onclick="saveDiagram()">
+                Save as SVG
+            </button>
         </div>
     </div>
 
     <script th:inline="javascript">
         /*<![CDATA[*/
+        var bpmnJs;
         $(document).ready(function () {
             var xml = [[${bpmn}]];
 
@@ -56,7 +68,7 @@
             var mydiv = document.getElementById('xml');
 
             mydiv.innerHTML = xml_escaped;
-
+            bpmnJs = new BpmnJS({container: '#renderedBPMN'});
         });
 
         function addPrefix(xml) {
@@ -78,36 +90,42 @@
         function createAndOpenFile() {
             var bpmn = [[${bpmn}]];
             bpmn = addPrefix(bpmn);
-            autoLayoutFromApi(bpmn).success(function(res, err) {
+            autoLayoutFromApi(bpmn).success(function (res, err) {
                 download(res, "process.bpmn", "text/xml");
-            }).fail(function(err) {
+            }).fail(function (err) {
                 download(bpmn, "process.bpmn", "text/xml");
             });
         }
 
         function renderBPMN() {
-            removeRenderedBPMN();
-            var viewer = new BpmnJS({ container: '#renderedBPMN' });
             var bpmn = [[${bpmn}]];
             bpmn = addPrefix(bpmn);
-            autoLayoutFromApi(bpmn).success(function(res, err) {
-                viewer.importXML(res, function(err) {
+            autoLayoutFromApi(bpmn).success(function (res, err) {
+                bpmnJs.importXML(res, function (err) {
 
                     if (err) {
                         console.log('error rendering', err);
                     } else {
-                        var canvas = viewer.get('canvas');
+                        var canvas = bpmnJs.get('canvas');
                         canvas.zoom('fit-viewport');
+                        $(".djs-palette").remove();
                     }
                 });
-            }).fail(function(err) {
+            }).fail(function (err) {
                 console.log('error rendering', err)
             });
         }
 
-        function removeRenderedBPMN() {
-            $('#renderedBPMN').remove();
-            $('#bpmnTab').append("<div id='renderedBPMN'></div>");
+
+        function saveDiagram() {
+            bpmnJs.saveSVG(function(err, svg) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                download(svg, "bpmnModel.svg", "application/svg+xml");
+            });
         }
 
         /*]]>*/
