@@ -34,9 +34,6 @@ public class BnclTaskParser extends BnclElementParser {
     public BpmnModelElementInstance parseTask(String elementString) throws Exception {
         List<String> withoutSpaces = BnclParser.getWordsWithoutSpaces(elementString);
 
-        /**for (String word : withoutSpaces) {
-         logger().info(word);
-         }**/
 
         if (!BnclParser.checkWords(withoutSpaces)) {
             return null;

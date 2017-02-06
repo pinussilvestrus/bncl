@@ -64,7 +64,7 @@ public class MainController {
         } catch (Exception e) {
             LOGGER.info(BNCL_PARSER_ERROR);
             model.addAttribute("err", true);
-            model.addAttribute("notificationMessage", BNCL_PARSER_ERROR);
+            model.addAttribute("notificationMessage", e.getMessage());
             model.addAttribute("xml", "");
         }
         return "main";
