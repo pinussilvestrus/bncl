@@ -25,7 +25,7 @@ repositories {
 
 apply plugin: 'application'
 
-mainClassName = 'de.niklaskiefer.bnclDemo.MainApplication'
+mainClassName = 'de.niklaskiefer.bnclWeb.MainApplication'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -50,7 +50,7 @@ jar {
     // put dependencies to jar
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest {
-        attributes 'Main-Class': 'de.niklaskiefer.bnclDemo.MainApplication'
+        attributes 'Main-Class': 'de.niklaskiefer.bnclWeb.MainApplication'
     }
 }
 

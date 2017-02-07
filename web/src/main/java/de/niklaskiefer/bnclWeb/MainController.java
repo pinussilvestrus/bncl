@@ -1,4 +1,4 @@
-package de.niklaskiefer.bnclDemo;
+package de.niklaskiefer.bnclWeb;
 
 import de.niklaskiefer.bnclCore.BnclToXmlWriter;
 import de.niklaskiefer.bnclCore.parser.BnclElementParser;
@@ -7,8 +7,8 @@ import de.niklaskiefer.bnclCore.parser.BnclGatewayParser;
 import de.niklaskiefer.bnclCore.parser.BnclParser;
 import de.niklaskiefer.bnclCore.parser.BnclSequenceFlowParser;
 import de.niklaskiefer.bnclCore.parser.BnclTaskParser;
-import de.niklaskiefer.bnclDemo.model.BnclStatement;
-import de.niklaskiefer.bnclDemo.model.BnclStatementRepository;
+import de.niklaskiefer.bnclWeb.model.BnclStatement;
+import de.niklaskiefer.bnclWeb.model.BnclStatementRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

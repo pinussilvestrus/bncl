@@ -1,4 +1,4 @@
-package de.niklaskiefer.bnclDemo.model;
+package de.niklaskiefer.bnclWeb.model;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
