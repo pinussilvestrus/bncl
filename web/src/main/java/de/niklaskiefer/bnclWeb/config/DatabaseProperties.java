@@ -8,6 +8,7 @@ public class DatabaseProperties {
      * Returns the url.
      */
     public static String getUrl() {
+        System.out.println(System.getProperty("url"));
         if (System.getProperty("url") != null) {
             return System.getProperty("url");
         }
