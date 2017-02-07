@@ -1,4 +1,4 @@
-package de.niklaskiefer.bnclDemo.config;
+package de.niklaskiefer.bnclWeb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

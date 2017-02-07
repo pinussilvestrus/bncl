@@ -11,3 +11,4 @@ core/out/
 !web/build/libs/*
 test_process.bpmn
 test_process.xml
+docker/bncl/*
