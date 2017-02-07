@@ -79,6 +79,7 @@ public class MainController {
             this.saveBnclStatementToDatabase(bncl);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e);
         }
         return "main";
     }
