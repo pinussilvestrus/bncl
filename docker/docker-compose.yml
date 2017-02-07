@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  mongodb:
+    image: mongo:3.4
+    entrypoint: mongod --dbpath /data/db
+    volumes:
+      - './bncl/db:/data/db'
+    ports:
+      - "27017"
+
+  web:
+    build: bncl-demo
+    ports:
+      - "8932:8080"
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
