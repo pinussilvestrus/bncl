@@ -1,4 +1,4 @@
-package de.niklaskiefer.bnclDemo.config;
+package de.niklaskiefer.bnclWeb.config;
 
 public class DatabaseProperties {
     public static final String TEST_DB_URL = "localhost";

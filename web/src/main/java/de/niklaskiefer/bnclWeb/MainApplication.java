@@ -1,16 +1,12 @@
-package de.niklaskiefer.bnclDemo;
+package de.niklaskiefer.bnclWeb;
 
-import de.niklaskiefer.bnclDemo.config.MongoConfig;
-import de.niklaskiefer.bnclDemo.config.ThymeleafConfig;
-import de.niklaskiefer.bnclDemo.model.BnclStatementRepository;
+import de.niklaskiefer.bnclWeb.config.ThymeleafConfig;
+import de.niklaskiefer.bnclWeb.model.BnclStatementRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.mongodb.core.MongoOperations;
 
 @SpringBootApplication
 @Import(ThymeleafConfig.class)

@@ -1,8 +1,7 @@
-package de.niklaskiefer.bnclDemo.config;
+package de.niklaskiefer.bnclWeb.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 
 import org.springframework.context.annotation.Bean;
