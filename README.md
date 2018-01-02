@@ -4,7 +4,7 @@
 [![Code Quality](https://img.shields.io/codeclimate/github/pinussilvestrus/bncl.svg)](https://travis-ci.org/pinussilvestrus/bncl)
 [![Version](https://img.shields.io/github/release/pinussilvestrus/bncl.svg)](https://github.com/pinussilvestrus/bncl/releases)
 
-Software by [Niklas Kiefer](https://www.niklaskiefer.de/) ([andserve](https://andserve.net/)), [MIT License](https://github.com/pinussilvestrus/bncl/blob/develop/LICENSE)
+Software by [Niklas Kiefer](https://www.niklaskiefer.de/), [MIT License](https://github.com/pinussilvestrus/bncl/blob/develop/LICENSE)
 
 **Table of Contents**
 
