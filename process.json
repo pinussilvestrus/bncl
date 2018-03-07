@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "name": "bncl",
+      "cwd": ".",
+      "script": "java",
+      "args": [
+        "-jar",
+        "./web/build/libs/bnclDemo-0.1.0.jar",
+        "-Dserver.port=8083"
+      ],
+      "watch": [
+        "./web/build/libs/bnclDemo-0.1.0.jar"
+      ],
+      "env": {
+        "PORT": "8083"
+      },
+      "node_args": [],
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "exec_interpreter": "",
+      "exec_mode": "fork"
+    }
+  ]
+}
