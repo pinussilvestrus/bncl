@@ -1,4 +1,5 @@
 ![alt text](logo.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl?ref=badge_shield)
 
 [![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![Code Coverage](https://img.shields.io/codecov/c/github/pinussilvestrus/bncl/master.svg)](https://travis-ci.org/pinussilvestrus/bncl)
 [![Code Quality](https://img.shields.io/codeclimate/github/pinussilvestrus/bncl.svg)](https://travis-ci.org/pinussilvestrus/bncl)
@@ -98,3 +99,7 @@ is a keyword that signs the beginning of a process element
 signs a sequence workflow between process elements. **comesfrom** with given id signs the fromElement, **goesto** signes the toElement.
 
 See the [wiki](https://github.com/pinussilvestrus/bncl/wiki) for all element types!
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl?ref=badge_large)
