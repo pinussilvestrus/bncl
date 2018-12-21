@@ -101,3 +101,5 @@ See the [wiki](https://github.com/pinussilvestrus/bncl/wiki) for all element typ
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl?ref=badge_large)
+
+Contains parts ([bpmn-js](https://github.com/bpmn-io/bpmn-js), [bpmnlint](https://github.com/bpmn-io/bpmnlint), [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpmnlint)) released under the [bpmn.io license](http://bpmn.io/license).
