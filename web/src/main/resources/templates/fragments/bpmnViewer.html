@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="bpmnViewer(bpmn)" th:if="${bpmn != ''}">
+
     <h4>BPMN 2.0 XML output: </h4>
     <div class="row">
         <button
@@ -29,9 +30,16 @@
             </pre>
         </div>
         <div id="bpmnTab" class="col s12">
-            <span class="badge-autolayout badge grey lighten-2 black-text"><a
-                    href="https://github.com/pinussilvestrus/bncl-autolayout" target="_blank">Auto-Layouting
-                by BNCL</a></span>
+            <a href="https://github.com/pinussilvestrus/bncl-autolayout" target="_blank">
+                <span class="badge-autolayout badge grey lighten-2 black-text">
+                    Auto-Layouting by BNCL
+                </span>
+            </a>
+            <a href="https://github.com/bpmn-io/bpmnlint" target="_blank">
+                <span class="badge-autolayout badge grey lighten-2 black-text">
+                    Linting by bpmn.io
+                </span>
+            </a>
             <div id="renderedBPMN"></div>
             <button
                     id="download-svg"
@@ -42,6 +50,8 @@
             </button>
         </div>
     </div>
+
+    <script type="text/javascript" src="bpmnjs/bpmnjs.bundled.js"></script>
 
     <script th:inline="javascript">
         /*<![CDATA[*/
@@ -68,7 +78,7 @@
             var mydiv = document.getElementById('xml');
 
             mydiv.innerHTML = xml_escaped;
-            bpmnJs = new BpmnJS({container: '#renderedBPMN'});
+            bpmnJs = window.bpmnViewer;
         });
 
         function addPrefix(xml) {
@@ -101,6 +111,7 @@
             var bpmn = [[${bpmn}]];
             bpmn = addPrefix(bpmn);
             autoLayoutFromApi(bpmn).success(function (res, err) {
+
                 bpmnJs.importXML(res, function (err) {
 
                     if (err) {
@@ -108,7 +119,9 @@
                     } else {
                         var canvas = bpmnJs.get('canvas');
                         canvas.zoom('fit-viewport');
-                        $(".djs-palette").remove();
+
+                        var linting = bpmnJs.get('linting');
+                        linting.activateLinting();
                     }
                 });
             }).fail(function (err) {
@@ -130,6 +143,7 @@
 
         /*]]>*/
     </script>
+
 </div>
 </body>
 </html>
