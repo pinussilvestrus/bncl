@@ -18,7 +18,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     @Bean
-    public Mongo mongo() throws Exception {
+    public MongoClient mongoClient() {
         return new MongoClient(singletonList(new ServerAddress(DatabaseProperties.getUrl(), 27017)));
     }
 }
