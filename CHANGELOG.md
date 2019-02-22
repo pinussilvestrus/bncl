@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/pinussilvestrus/bncl/tree/HEAD)
-
-[Full Changelog](https://github.com/pinussilvestrus/bncl/compare/v0.1.6...HEAD)
+## [v0.1.7](https://github.com/pinussilvestrus/bncl/tree/v0.1.7) (2019-02-22)
+[Full Changelog](https://github.com/pinussilvestrus/bncl/compare/v0.1.6...v0.1.7)
 
 **Implemented enhancements:**
 
