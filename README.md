@@ -79,6 +79,9 @@ $ ./gradlew check
 
 Feel free to contribute. Just create an issue or create a pull request.
 
+## Updating Changelog
+
+We use [`github-changelog-generator`](https://github.com/github-changelog-generator/github-changelog-generator) for updating the Changelog automatically.
 
 ## BNCL-structure
 
