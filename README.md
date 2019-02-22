@@ -1,4 +1,4 @@
-![alt text](logo.png)
+![alt text](logo1.png)
 
 [![Build Status](https://travis-ci.org/pinussilvestrus/bncl.svg?branch=master)](https://travis-ci.org/pinussilvestrus/bncl) [![codecov](https://codecov.io/gh/pinussilvestrus/bncl/branch/develop/graph/badge.svg)](https://codecov.io/gh/pinussilvestrus/bncl)
 [![Version](https://img.shields.io/github/release/pinussilvestrus/bncl.svg)](https://github.com/pinussilvestrus/bncl/releases) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpinussilvestrus%2Fbncl?ref=badge_shield)

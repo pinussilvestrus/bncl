@@ -2,12 +2,37 @@
 
 ## [Unreleased](https://github.com/pinussilvestrus/bncl/tree/HEAD)
 
-[Full Changelog](https://github.com/pinussilvestrus/bncl/compare/v0.1.5...HEAD)
+[Full Changelog](https://github.com/pinussilvestrus/bncl/compare/v0.1.6...HEAD)
+
+**Implemented enhancements:**
+
+- Update gradle [\#78](https://github.com/pinussilvestrus/bncl/issues/78)
 
 **Closed issues:**
 
+- Create core v0.1.6 [\#67](https://github.com/pinussilvestrus/bncl/issues/67)
+
+**Merged pull requests:**
+
+- Merge master [\#82](https://github.com/pinussilvestrus/bncl/pull/82) ([pinussilvestrus](https://github.com/pinussilvestrus))
+- Bump spring-boot-starter-test from 2.1.2.RELEASE to 2.1.3.RELEASE in /web [\#81](https://github.com/pinussilvestrus/bncl/pull/81) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump spring-boot-gradle-plugin from 2.1.2.RELEASE to 2.1.3.RELEASE in /web [\#80](https://github.com/pinussilvestrus/bncl/pull/80) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(gradle\): update version [\#79](https://github.com/pinussilvestrus/bncl/pull/79) ([pinussilvestrus](https://github.com/pinussilvestrus))
+- Bump spring-boot-starter-test from 2.1.1.RELEASE to 2.1.2.RELEASE in /web [\#77](https://github.com/pinussilvestrus/bncl/pull/77) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v0.1.6](https://github.com/pinussilvestrus/bncl/tree/v0.1.6) (2018-12-20)
+[Full Changelog](https://github.com/pinussilvestrus/bncl/compare/v0.1.5...v0.1.6)
+
+**Closed issues:**
+
+- Fix coverage badge [\#69](https://github.com/pinussilvestrus/bncl/issues/69)
+- Remove Matomo [\#68](https://github.com/pinussilvestrus/bncl/issues/68)
+- Update bpmn-js [\#66](https://github.com/pinussilvestrus/bncl/issues/66)
+- Move analytics to piwik [\#58](https://github.com/pinussilvestrus/bncl/issues/58)
+- dockerize bncl-demo [\#56](https://github.com/pinussilvestrus/bncl/issues/56)
 - move "Auto-Layouting by BNCL" somewhere else or make it prettier [\#52](https://github.com/pinussilvestrus/bncl/issues/52)
 - Save rendered bpmn as png file [\#50](https://github.com/pinussilvestrus/bncl/issues/50)
+- Save last bncl input and autofill [\#49](https://github.com/pinussilvestrus/bncl/issues/49)
 - move autolayouting from web to bncl-autolayout repo [\#45](https://github.com/pinussilvestrus/bncl/issues/45)
 - use bpmn.js for rendering a bpmn graph [\#44](https://github.com/pinussilvestrus/bncl/issues/44)
 - Create error panel [\#43](https://github.com/pinussilvestrus/bncl/issues/43)
@@ -24,6 +49,15 @@
 
 **Merged pull requests:**
 
+- v0.1.6 [\#72](https://github.com/pinussilvestrus/bncl/pull/72) ([pinussilvestrus](https://github.com/pinussilvestrus))
+- update bpmn-js [\#71](https://github.com/pinussilvestrus/bncl/pull/71) ([pinussilvestrus](https://github.com/pinussilvestrus))
+- Remove matomo [\#70](https://github.com/pinussilvestrus/bncl/pull/70) ([pinussilvestrus](https://github.com/pinussilvestrus))
+- Bump junit from 4.11 to 4.12 in /web [\#65](https://github.com/pinussilvestrus/bncl/pull/65) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump spring-boot-starter-test from 1.3.6.RELEASE to 2.1.1.RELEASE in /web [\#63](https://github.com/pinussilvestrus/bncl/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump junit from 4.11 to 4.12 in /core [\#62](https://github.com/pinussilvestrus/bncl/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump camunda-bpmn-model from 7.5.0-alpha4 to 7.10.0 in /core [\#61](https://github.com/pinussilvestrus/bncl/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Add license scan report and status [\#60](https://github.com/pinussilvestrus/bncl/pull/60) ([fossabot](https://github.com/fossabot))
+- add matomo, fixes \#58 [\#59](https://github.com/pinussilvestrus/bncl/pull/59) ([pinussilvestrus](https://github.com/pinussilvestrus))
 - Feature/bncl 49 save bncl input [\#57](https://github.com/pinussilvestrus/bncl/pull/57) ([pinussilvestrus](https://github.com/pinussilvestrus))
 - improve error handling [\#55](https://github.com/pinussilvestrus/bncl/pull/55) ([pinussilvestrus](https://github.com/pinussilvestrus))
 - add download svg button [\#54](https://github.com/pinussilvestrus/bncl/pull/54) ([pinussilvestrus](https://github.com/pinussilvestrus))
