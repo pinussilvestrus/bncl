@@ -11,6 +11,7 @@ Software by [Niklas Kiefer](https://www.niklaskiefer.de/), [MIT License](https:/
 - [Auto-Layout](#autolayout)
 - [Demo](#demo)
 - [Development](#development)
+- [Updating Changelog](#updating-changelog)
 - [BNCL-structure](#bncl-structure)
 
 ## Introduction
