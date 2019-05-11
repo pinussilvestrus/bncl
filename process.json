@@ -6,11 +6,11 @@
       "script": "java",
       "args": [
         "-jar",
-        "./web/build/libs/bnclDemo-0.1.0.jar",
+        "./web/build/libs/web-1.0-SNAPSHOT.jar",
         "-Dserver.port=8083"
       ],
       "watch": [
-        "./web/build/libs/bnclDemo-0.1.0.jar"
+        "./web/build/libs/web-1.0-SNAPSHOT.jar"
       ],
       "env": {
         "PORT": "8083"
