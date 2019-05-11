@@ -76,7 +76,7 @@ public class MainController {
 
         // db should be independent from converting
         try {
-            this.saveBnclStatementToDatabase(bncl);
+            // this.saveBnclStatementToDatabase(bncl);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
