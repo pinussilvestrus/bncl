@@ -33,7 +33,7 @@
   position: absolute;
   bottom: 150px;
   right: 20px;
-  background-color: #fafafa;
+  background-color: #fafafa !important;
   padding: 5px 10px;
   border: none;
   color: #ddd;
@@ -53,12 +53,12 @@
 }
 
 .bpmn-js-bpmnlint-button.success {
-  background-color: #52b415;
+  background-color: #52b415 !important;
   color: white;
 }
 
 .bpmn-js-bpmnlint-button.error {
-  background-color: #cc3300;
+  background-color: #cc3300 !important;
   color: white;
 }
 
