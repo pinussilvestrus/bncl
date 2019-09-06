@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bpmn-js": "^5.0.0",
-    "bpmn-js-bpmnlint": "^0.12.0"
+    "bpmn-js-bpmnlint": "^0.13.0"
   },
   "devDependencies": {
     "bpmnlint": "^6.0.0",
