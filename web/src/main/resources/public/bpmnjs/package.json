@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bpmn-js": "^6.4.2",
+    "bpmn-js": "^7.0.0",
     "bpmn-js-bpmnlint": "^0.15.0"
   },
   "devDependencies": {
