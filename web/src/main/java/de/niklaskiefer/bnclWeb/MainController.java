@@ -7,12 +7,9 @@ import de.niklaskiefer.bnclCore.parser.BnclGatewayParser;
 import de.niklaskiefer.bnclCore.parser.BnclParser;
 import de.niklaskiefer.bnclCore.parser.BnclSequenceFlowParser;
 import de.niklaskiefer.bnclCore.parser.BnclTaskParser;
-import de.niklaskiefer.bnclWeb.model.BnclStatement;
-import de.niklaskiefer.bnclWeb.model.BnclStatementRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,8 +44,6 @@ public class MainController {
                     "messagethrowevent signed endevent1 called terminated with " +
                     "sequenceflow comesfrom gateway2 goesto endevent1";
 
-    @Autowired
-    private BnclStatementRepository bnclStatementRepository;
 
     @ModelAttribute("bnclWords")
     public List<String> bnclWords() {
@@ -74,13 +69,6 @@ public class MainController {
             model.addAttribute("xml", "");
         }
 
-        // db should be independent from converting
-        try {
-            // this.saveBnclStatementToDatabase(bncl);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-        }
         return "main";
     }
 
@@ -128,7 +116,4 @@ public class MainController {
         return words;
     }
 
-    private void saveBnclStatementToDatabase(String bncl) {
-        bnclStatementRepository.save(new BnclStatement(bncl));
-    }
 }
