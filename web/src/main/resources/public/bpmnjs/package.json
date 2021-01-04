@@ -10,13 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bpmn-js": "^7.2.0",
-    "bpmn-js-bpmnlint": "^0.15.0"
+    "bpmn-js": "^8.0.0",
+    "bpmn-js-bpmnlint": "^0.16.0"
   },
   "devDependencies": {
-    "bpmnlint": "^6.4.0",
+    "bpmnlint": "^7.0.1",
     "bpmnlint-loader": "^0.1.4",
-    "raw-loader": "^4.0.1",
+    "raw-loader": "^4.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   }
