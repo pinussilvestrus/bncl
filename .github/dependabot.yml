@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/core"
+  schedule:
+    interval: monthly
+    time: "10:00"
+    timezone: Europe/Amsterdam
+  reviewers:
+  - pinussilvestrus
+  assignees:
+  - pinussilvestrus
+- package-ecosystem: gradle
+  directory: "/web"
+  schedule:
+    interval: monthly
+    time: "10:00"
+    timezone: Europe/Amsterdam
+  reviewers:
+  - pinussilvestrus
+  assignees:
+  - pinussilvestrus
+- package-ecosystem: npm
+  directory: "/web/src/main/resources/public/bpmnjs"
+  schedule:
+    interval: monthly
+    time: "10:00"
+    timezone: Europe/Amsterdam
