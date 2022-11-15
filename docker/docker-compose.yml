@@ -2,7 +2,7 @@ version: "2"
 
 services:
   mongodb:
-    image: mongo:3.4
+    image: mongo:3.7
     entrypoint: mongod --dbpath /data/db
     volumes:
       - './bncl/db:/data/db'
