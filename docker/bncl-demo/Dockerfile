@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:17.0.2
 
 WORKDIR ~/
 RUN apt-get update && apt-get install -y git && git clone https://github.com/pinussilvestrus/bncl.git
