@@ -14,7 +14,7 @@
     "bpmn-js-bpmnlint": "^0.19.0"
   },
   "devDependencies": {
-    "bpmnlint": "^7.2.1",
+    "bpmnlint": "^10.0.0",
     "bpmnlint-loader": "^0.1.5",
     "raw-loader": "^4.0.2",
     "webpack": "^5.47.1",
