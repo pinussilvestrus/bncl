@@ -55,7 +55,7 @@ jar {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '6.9.3'
+    gradleVersion = '8.7'
 }
 
 task stage {
