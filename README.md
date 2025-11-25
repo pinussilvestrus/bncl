@@ -1,3 +1,5 @@
+> ⚠️ This project is not actively maintained and won't likely get any updates.
+
 ![alt text](logo.png)
 
 ![Build Status](https://github.com/pinussilvestrus/bncl/workflows/ci/badge.svg) [![codecov](https://codecov.io/gh/pinussilvestrus/bncl/branch/develop/graph/badge.svg)](https://codecov.io/gh/pinussilvestrus/bncl)
